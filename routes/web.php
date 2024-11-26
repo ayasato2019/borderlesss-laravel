@@ -14,6 +14,26 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/works', function () {
+    return Inertia::render('Works');
+})->name('works');
+
+Route::get('/service', function () {
+    return Inertia::render('Service');
+})->name('service');
+
+Route::get('/blog', function () {
+    return Inertia::render('Blog');
+})->name('blog');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
+
+Route::get('/privacy-policy', function () {
+    return Inertia::render('PrivacyPolicy');
+})->name('PrivacyPolicy');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

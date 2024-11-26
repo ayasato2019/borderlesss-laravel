@@ -13,8 +13,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                ja: ["Zen Dots", serif],
-                en: ["Zen Antique Soft", serif],
+                // sans: ['Inter', 'sans-serif'],
+                ja: ["Zen Antique Soft", 'serif'],
+                en: ["Zen Dots", 'serif'],
             },
         },
     },
