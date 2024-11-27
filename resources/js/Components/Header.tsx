@@ -15,9 +15,27 @@ export default function Header() {
     setTimeout(() => setIsJumping(false), 300)
   }
 
+  const links = [
+    {
+      url: 'https://github.com/ayasato2019',
+      icon: githubIcon,
+      alt: 'GitHubのロゴ',
+    },
+    {
+      url: 'https://x.com/borderlesss_aya',
+      icon: twitterIcon,
+      alt: 'X旧Twitterのロゴ',
+    },
+    {
+      url: 'https://zenn.dev/aya_sato',
+      icon: zennIcon,
+      alt: 'Zennのロゴ',
+    },
+  ];
+
   return (
     <header className="header">
-      <div className="header-inner">
+      <div className="relative selection:bg-rose-700 selection:text-amber-500 pl-2 pr-4 py-4 flex justify-between items-center flex-wrap w-full lg:items-start lg:flex-row lg:flex-nowrap lg:justify-between">
         <h1 className="logo px-5">
           <Link
           className='relative text-slate-950 font-en leading-none'
@@ -40,44 +58,34 @@ export default function Header() {
         </motion.button>
 
         <nav
-          className={`header-nav-wrap flex w-full h-0 absolute top-[58px] left-0 lg:opacity-100 ease-out invisible ${isMenuOpen ? 'active' : ''}`}
+          className={`header-nav-wrap ${isMenuOpen ? 'active' : ''}`}
           aria-labelledby="main-navigation"
         >
           <h2 className="sr-only">メインナビゲーション</h2>
-          <ul className="w-auto flex-col gap-4 list-[''] mx-auto" role="menu">
-            {["/works/", "/service/", "/blog/"].map((link, index) => (
-              <li key={index} className="w-auto">
+          <ul className="w-auto flex flex-col flex-wrap lg:flex-row lg:justify-center lg:items-center gap-4 lg:gap-0 list-[''] mx-auto lg:mx-0" role="menu">
+            {["/about/", "/works/", "/service/", "/blog/"].map((link, index) => (
+              <li key={index} className="w-auto lg:w-1/5 h-auto">
                 <Link href={link} className="header-nav-link">{link.slice(1, -1).toUpperCase()}</Link>
               </li>
             ))}
-            <li className="w-auto">
+            <li className="w-auto h-auto lg:w-1/5">
               <Link href="/contact/" className="header-nav-link contact">CONTACT</Link>
             </li>
-            <li className="w-full lg:w-auto">
-              <Link href="/privacy-policy/" className="flex p-4 text-slate-500 font-en cursor-pointer ease-out break-keep h-full justify-center lg:justify-start text-xs w-full lg:w-auto ">Privacy Policy</Link>
+            <li className="w-full">
+              <Link href="/privacy-policy/" className="flex p-4 lg:p-0 text-slate-500 font-en cursor-pointer ease-out break-keep h-full lg:h-auto justify-center lg:justify-start text-xs w-full lg:w-auto lg:absolute lg:top-[-24px] lg:right-28">Privacy Policy</Link>
             </li>
-            <li className="sns-buttons flex gap-2 p-4 mg:p-0 items-center justify-center">
+            <li className="flex gap-2 p-4 lg:p-0 lg:pr-4 items-center justify-center  lg:absolute lg:right-2 lg:top-[-24px] img:w-full img:h-full img:object-cover">
+            {links.map((link, index) => (
               <a
-                href="https://github.com/ayasato2019"
+                key={index}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-10 h-10 overflow-hidden p-2 lg:p-2 max-w-20 hover:scale-120  transition-all">
-                <img src={githubIcon} alt="GitHubのロゴ" />
+                className="block w-10 h-10 overflow-hidden p-2 lg:p-0 max-w-20 hover:scale-120 transition-all lg:w-4 lg:h-4"
+              >
+                <img src={link.icon} alt={link.alt} />
               </a>
-              <a
-                href="https://x.com/borderlesss_aya"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-10 h-10 overflow-hidden p-3 max-w-20 hover:scale-120  transition-all">
-                <img src={twitterIcon} alt="X旧Twitterのロゴ" />
-              </a>
-              <a
-                href="https://zenn.dev/aya_sato"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-10 h-10 overflow-hidden p-2 max-w-20 hover:scale-120  transition-all">
-                <img src={zennIcon} alt="Zennのロゴ" />
-              </a>
+              ))}
             </li>
           </ul>
         </nav>

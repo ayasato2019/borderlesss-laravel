@@ -25,6 +25,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "motion": "^11.11.17"
+        "motion": "^11.11.17",
+        "react-parallax": "^3.5.1"
     }
 }
