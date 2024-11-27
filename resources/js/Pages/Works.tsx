@@ -3,9 +3,9 @@ import WorksList from '../Components/Works/WorkList';
 
 export default function Service() {
     return (
-        <div>
+        <Layout>
             <WorksList />
-        </div>
+        </Layout>
     );
 }
 

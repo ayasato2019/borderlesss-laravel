@@ -86,8 +86,28 @@ body {
 * components
 *****************/
 .page-title {
-	@apply absolute bottom-8 left-1/2 translate-x-[-50%] font-en text-center text-5xl;
+	@apply relative font-en text-center text-5xl text-transparent bg-clip-text;
+    background-image: radial-gradient(#64748B 1px, transparent 1px);
+    background-size: 3px 3px;
+    -webkit-text-fill-color: transparent;
 }
+
+/* .page-title::before ,
+.page-title::after {
+	@apply absolute left-0 bottom-0 block w-1/2 h-1/2 mix-blend-difference z-0;
+	content: "";
+	clip-path: polygon(0 0, 98% 0%, 100% 100%, 0% 100%);
+}
+.page-title::before {
+	@apply bg-[rgba(226,232,240,.64)]
+} */
+/* .page-title::after {
+	background-color: transparent;
+	background-image: radial-gradient(rgba(226,232,240,.64) 1px, transparent 1px);
+	background-size: 3px 3px;
+	opacity: 1;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+} */
 
 .logo a:hover {
 	animation: glitc 2.5s infinite;

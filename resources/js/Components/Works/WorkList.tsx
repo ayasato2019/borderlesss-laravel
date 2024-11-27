@@ -21,27 +21,30 @@ export default function WorksList() {
 	];
 
 	return (
-		<ul className='flex items-center justify-center flex-wrap min-h-screen'>
-			{links.map((link, index) => (
-				<li className='w-full md:w-1/2'>
-					<a
-						key={index}
-						href={link.url}
-						className='flex p-4'
-					>
-						<picture key={index}>
-							<source srcSet={link.imageWebp} />
-							<img src={link.imagePng}
-								alt={link.alt}
-								width='700px'
-								height='400px'
-								loading='lazy'
-								className='drop-shadow-lg w-full h-full object-contain'
-							/>
-						</picture>
-					</a>
-				</li>
-			))}
-		</ul>
+		<>
+			<h1 className='page-title'>WORKS</h1>
+			<ul className='flex items-center justify-start flex-wrap'>
+				{links.map((link, index) => (
+					<li className='w-full md:w-1/2'>
+						<a
+							key={index}
+							href={link.url}
+							className='flex p-4'
+						>
+							<picture key={index}>
+								<source srcSet={link.imageWebp} />
+								<img src={link.imagePng}
+									alt={link.alt}
+									width='700px'
+									height='400px'
+									loading='lazy'
+									className='drop-shadow-lg w-full h-full object-contain'
+								/>
+							</picture>
+						</a>
+					</li>
+				))}
+			</ul>
+		</>
 	)
 }

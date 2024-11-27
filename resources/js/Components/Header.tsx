@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <div className="relative selection:bg-rose-700 selection:text-amber-500 pl-2 pr-4 py-4 flex justify-between items-center flex-wrap w-full lg:items-start lg:flex-row lg:flex-nowrap lg:justify-between">
+      <div className="relative selection:bg-rose-700 selection:text-amber-500 pl-2 pr-4 py-4 flex justify-between items-center flex-wrap w-full lg:items-start lg:flex-row lg:flex-nowrap lg:justify-between mix-blend-difference">
         <h1 className="logo px-5">
           <Link
           className='relative text-slate-950 font-en leading-none'
