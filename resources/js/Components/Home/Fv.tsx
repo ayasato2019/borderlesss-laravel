@@ -26,7 +26,6 @@ export default function HomeFv() {
 						</svg>
 					{/* </Background> */}
 				</div>
-				{/*   */}
 				<div className="absolute bottom-2 left-1/2 translate-x-[-50%] w-full px-8 break-keep mix-blend-difference text-center">
 					<p className="fv-text">Taking children's problems.</p>
 				</div>

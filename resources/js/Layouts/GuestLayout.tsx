@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
 import Header from '../Components/Header';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import { Link } from '@inertiajs/react';
+import Footer from '../Components/Footer';
 import { PropsWithChildren } from 'react';
 
 export default function Guest({ children }: PropsWithChildren) {
@@ -14,9 +12,7 @@ export default function Guest({ children }: PropsWithChildren) {
                         {children}
                     </section>
                 </main>
-                <footer className="footer">
-                    <p className="w-full pr-2text-center text-xs font-en text-slate-300">©BORDERLESSS {`2019 - ${currensYear}`}</p>
-                </footer>
+                <Footer />
             </div >
         </>
     );

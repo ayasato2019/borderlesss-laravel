@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { PageProps } from '@/types';
 import Fv from '../Components/Home/Fv';
+import WorksList from '../Components/Works/WorkList';
 
 import { Head, Link } from '@inertiajs/react';
 import Header from '../Components/Header';
@@ -32,7 +33,7 @@ export default function Welcome({
                 <Header />
                 <main className="absolute top-0 left-0 w-full h-full min-h-screen">
                 <Fv />
-                <Fv />
+                <WorksList />
                 </main>
                 <Footer />
             </div>
