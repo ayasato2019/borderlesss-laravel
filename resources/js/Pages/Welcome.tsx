@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { PageProps } from '@/types';
 import Fv from '../Components/Home/Fv';
 import WorksList from '../Components/Works/WorkList';
+import ServiceList from '../Components/Service/ServiceList';
 
 import { Head, Link } from '@inertiajs/react';
 import Header from '../Components/Header';
@@ -35,6 +36,9 @@ export default function Welcome({
                     <Fv />
                     <div id='works' className="flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <WorksList />
+                    </div>
+                    <div id='service' className="flex flex-col items-center justify-center flex-wrap min-h-screen">
+                        <ServiceList />
                     </div>
                 </main>
                 <Footer />

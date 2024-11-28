@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Title from '../PageTitle';
+import { motion } from 'framer-motion';
 import serviseWebImageJpg from '../../../images/service-website.jpg';
 import serviseWebImageWebp from '../../../images/service-website.webp';
 import serviseFrontendImageJpg from '../../../images/service-frontend.jpg';
@@ -127,10 +128,16 @@ export default function ServiceList() {
 		};
 	}, [scrolling, activeIndex]);
 
+	const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
+
 	return (
 		<>
 			<Title title="service" />
-			<ul className="skw-pages overflow-hidden relative w-full h-[calc(100dvh-13rem-3rem-40px)]">
+			<motion.ul
+				initial={{ opacity: 0, y: 50 }}
+				animate={{ opacity: 1, y: 0 }}
+				className="skw-pages overflow-hidden relative w-full h-[calc(100dvh-13rem-3rem-40px)]"
+			>
 				{service.map((item, index) => (
 					<li
 						key={index}
@@ -165,7 +172,7 @@ export default function ServiceList() {
 						</div>
 					</li>
 				))}
-			</ul>
+			</motion.ul>
 		</>
 	);
 }
