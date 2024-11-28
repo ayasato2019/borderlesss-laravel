@@ -15,11 +15,11 @@ Route::get('/', function () {
 });
 
 Route::get('/works', function () {
-    return Inertia::render('Works/Works');
+    return Inertia::render('Works/app');
 })->name('works');
 
 Route::get('/service', function () {
-    return Inertia::render('Service');
+    return Inertia::render('Service/app');
 })->name('service');
 
 Route::get('/blog', function () {
