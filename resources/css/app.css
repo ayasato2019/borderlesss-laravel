@@ -86,28 +86,38 @@ body {
 * components
 *****************/
 .page-title {
-	@apply relative font-en text-center text-5xl text-transparent bg-clip-text;
+	@apply relative h-10 overflow-hidden;
+}
+/* .page-title {
+	@apply relative font-en text-center text-5xl text-transparent bg-clip-text mb-10;
     background-image: radial-gradient(#64748B 1px, transparent 1px);
     background-size: 3px 3px;
     -webkit-text-fill-color: transparent;
+} */
+
+.page-title::before {
+	@apply absolute bottom-0 left-0 block w-full h-full z-[-1] mix-blend-multiply;
+	content: "";
+	background: linear-gradient(transparent 70%, rgb(245 158 11) 70%);
 }
 
-/* .page-title::before ,
-.page-title::after {
-	@apply absolute left-0 bottom-0 block w-1/2 h-1/2 mix-blend-difference z-0;
-	content: "";
-	clip-path: polygon(0 0, 98% 0%, 100% 100%, 0% 100%);
+.page-title span{
+	@apply relative font-en text-center text-5xl text-transparent bg-clip-text mb-10;
+    background-image: radial-gradient(#64748B 1px, transparent 1px);
+    background-size: 3px 3px;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(50px);
+    animation: textAnime 1s ease-out forwards;
+	animation-iteration-count: 1;
 }
-.page-title::before {
-	@apply bg-[rgba(226,232,240,.64)]
-} */
-/* .page-title::after {
-	background-color: transparent;
-	background-image: radial-gradient(rgba(226,232,240,.64) 1px, transparent 1px);
-	background-size: 3px 3px;
-	opacity: 1;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
-} */
+
+@keyframes textAnime {
+    100%{
+    transform: translateY(0px);
+    }
+}
 
 .logo a:hover {
 	animation: glitc 2.5s infinite;

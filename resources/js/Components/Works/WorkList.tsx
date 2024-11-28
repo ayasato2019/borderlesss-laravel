@@ -1,4 +1,4 @@
-import { ul } from 'motion/react-client';
+import Title from '../PageTitle';
 import ClientAImagePng from '../../../images/works-cliantA.png';
 import ClientAImageWebp from '../../../images/works-cliantA.webp';
 import ClientBImagePng from '../../../images/works-cliantB.png';
@@ -22,7 +22,7 @@ export default function WorksList() {
 
 	return (
 		<>
-			<h1 className='page-title'>WORKS</h1>
+		<Title title="works" />
 			<ul className='flex items-center justify-start flex-wrap'>
 				{links.map((link, index) => (
 					<li className='w-full md:w-1/2'>

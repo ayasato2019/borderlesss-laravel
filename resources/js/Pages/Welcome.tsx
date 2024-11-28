@@ -33,7 +33,9 @@ export default function Welcome({
                 <Header />
                 <main className="absolute top-0 left-0 w-full h-full min-h-screen">
                 <Fv />
+                <div className="flex flex-col items-center justify-center flex-wrap min-h-screen">
                 <WorksList />
+                </div>
                 </main>
                 <Footer />
             </div>
