@@ -39,6 +39,13 @@ body {
 	background-image: linear-gradient(90deg, #E2E8F0 1px, transparent 1px), linear-gradient(#E2E8F0 1px, transparent 1px);
 	background-position: 10px 10px;
 	background-size: 21px 21px;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(100px);
+	-ms-scroll-snap-type: mandatory;
+	-ms-scroll-snap-points-y: repeat(100px);
+	-webkit-scroll-snap-type: mandatory;
+	-webkit-scroll-snap-points-y: repeat(100vh);
+	scroll-snap-type: y mandatory;
 }
 
 .header {
@@ -445,19 +452,28 @@ body {
 *****************/
 
 .skw-page__half {
+	@apply opacity-0;
 	transition: transform 1s;
 }
 
 .skw-page__half--left {
-	clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+	@apply z-10;
+	clip-path: polygon(0 0, 100% 0%, 75% 90%, 0% 90%);
 	transform: translate3d(-32.4vh, 100%, 0);
 }
 
 .skw-page__half--right {
-	transform: translate3d(32.4vh, -100%, 0);
+	transform: translate3d(16.2vh, -100%, 0);
+}
+
+.skw-page__half--right::before {
+	@apply absolute top-1/2 left-[-33%] block w-[125%] h-1/2 bg-slate-300 z-[-1];
+	content:"";
+	clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
 }
 
 .skw-page.active .skw-page__half {
+	@apply opacity-100;
 	transform: translate3d(0, 0, 0);
 }
 
@@ -466,32 +482,32 @@ body {
 *****************/
 
 .tab {
-  display: flex;
-  flex-wrap: wrap;
-width: min(100%, 700px);
-margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	width: min(100%, 700px);
+	margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
-.tab {
-  display: flex;
-  flex-wrap: wrap;
-}
+	.tab {
+	display: flex;
+	flex-wrap: wrap;
+	}
 }
 
 .tab > label {
-overfllow: hidden;
-position: relative;
-flex: 1 1;
-  order: -1;
-  min-width: 100px;
-  padding: .7em 1em .5em;
-  border-radius: 0;
-  font-size: .9em;
-  text-align: center;
-  cursor: pointer;
-transition: .2s;
-word-break: keep-all;
+	overfllow: hidden;
+	position: relative;
+	flex: 1 1;
+	order: -1;
+	min-width: 100px;
+	padding: .7em 1em .5em;
+	border-radius: 0;
+	font-size: .9em;
+	text-align: center;
+	cursor: pointer;
+	transition: .2s;
+	word-break: keep-all;
 }
 
 .tab > label:not(:checked) {

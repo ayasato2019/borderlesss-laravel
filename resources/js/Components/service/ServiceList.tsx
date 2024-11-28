@@ -128,23 +128,20 @@ export default function ServiceList() {
 		};
 	}, [scrolling, activeIndex]);
 
-	const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
-
 	return (
 		<>
 			<Title title="service" />
 			<motion.ul
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
-				className="skw-pages overflow-hidden relative w-full h-[calc(100dvh-13rem-3rem-40px)]"
-			>
+				className="skw-pages overflow-hidden relative w-full h-[calc(100dvh-13rem-3rem-40px)]">
 				{service.map((item, index) => (
 					<li
 						key={index}
 						ref={(el) => (pageRefs.current[index] = el)} // リファレンスの設定
 						className={`skw-page skw-page-${index} ${index === activeIndex ? 'active' : 'inactive'} absolute left-0 top-0 w-full h-full flex flex-row`}
 					>
-						<div className="skw-page__half overflow-hidden skw-page__half--left w-1/2 left-0">
+						<div className="skw-page__half skw-page__half--left w-1/2 left-0">
 							<div className="skw-page__skewed overflow-hidden absolute top-0 w-[140%] h-full bg-orange-700">
 								<div className="skw-page__content h-full w-full">
 									<picture>
@@ -161,9 +158,9 @@ export default function ServiceList() {
 								</div>
 							</div>
 						</div>
-						<div className="skw-page__half overflow-hidden skw-page__half--right w-1/2 left-1/2">
+						<div className="skw-page__half skw-page__half--right w-1/2 left-1/2">
 							<div className="skw-page__skewed h-full w-full">
-								<div className="skw-page__content p-5 pl-10 h-full flex flex-col gap-2 items-center justify-center w-full text-center">
+								<div className="skw-page__content p-5 pl-10 h-full flex flex-col gap-2 items-center justify-center w-2/3 text-center">
 									<h2 className="font-en text-5xl text-slate-500">{item.title}</h2>
 									<p className="font-en text-md text-slate-500">Tool:&nbsp;{item.tool}</p>
 									<p className="font-en text-md text-slate-950">{item.text}</p>
