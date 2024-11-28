@@ -23,8 +23,8 @@ export default function Welcome({
         document.getElementById('background')?.classList.add('!hidden');
     };
     useEffect(() => {
-		document.title = 'home';
-	}, []);
+        document.title = 'home';
+    }, []);
 
     return (
         <>
@@ -32,10 +32,10 @@ export default function Welcome({
             <div className="wrapper relative max-w-7xl mx-auto w-full h-auto min-h-screen">
                 <Header />
                 <main className="absolute top-0 left-0 w-full h-full min-h-screen">
-                <Fv />
-                <div className="flex flex-col items-center justify-center flex-wrap min-h-screen">
-                <WorksList />
-                </div>
+                    <Fv />
+                    <div id='works' className="flex flex-col items-center justify-center flex-wrap min-h-screen">
+                        <WorksList />
+                    </div>
                 </main>
                 <Footer />
             </div>

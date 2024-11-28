@@ -86,19 +86,7 @@ body {
 * components
 *****************/
 .page-title {
-	@apply relative h-10 overflow-hidden;
-}
-/* .page-title {
-	@apply relative font-en text-center text-5xl text-transparent bg-clip-text mb-10;
-    background-image: radial-gradient(#64748B 1px, transparent 1px);
-    background-size: 3px 3px;
-    -webkit-text-fill-color: transparent;
-} */
-
-.page-title::before {
-	@apply absolute bottom-0 left-0 block w-full h-full z-[-1] mix-blend-multiply;
-	content: "";
-	background: linear-gradient(transparent 70%, rgb(245 158 11) 70%);
+	@apply relative h-10 overflow-hidden mb-10;
 }
 
 .page-title span{
@@ -117,6 +105,35 @@ body {
     100%{
     transform: translateY(0px);
     }
+}
+
+.page-title span::before {
+	@apply absolute top-0 left-0 block w-full h-full bg-amber-500;
+	content: "";
+	animation: textAnimeSpan 1s ease-out forwards;
+}
+
+@keyframes textAnimeSpan {
+    100%{
+    transform: translateY(-50px);
+    }
+}
+
+.text-balloon {
+	@apply relative ml-4 px-3 py-5 rounded-3xl bg-white;
+}
+
+.text-balloon:first-child::before {
+	@apply absolute bottom-[-16px] right-1/2 w-4 h-4 bg-white;
+	content: '';
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+@media screen and (min-width: 1024px) {
+	.text-balloon:first-child::before {
+		@apply bottom-1/2 right-[-16px];
+		clip-path: polygon(0 0, 100% 50%, 0 100%);
+	}
 }
 
 .logo a:hover {

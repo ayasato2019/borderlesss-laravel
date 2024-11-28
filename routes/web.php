@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('/works', function () {
-    return Inertia::render('Works');
+    return Inertia::render('Works/Works');
 })->name('works');
 
 Route::get('/service', function () {
