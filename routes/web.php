@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -22,8 +23,13 @@ Route::get('/service', function () {
     return Inertia::render('Service/app');
 })->name('service');
 
+Route::get('/zenn/articles', function () {
+    $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
+    return response()->json($response->json());
+});
+
 Route::get('/blog', function () {
-    return Inertia::render('Blog');
+    return Inertia::render('Blog/app');
 })->name('blog');
 
 Route::get('/contact', function () {

@@ -78,7 +78,7 @@ export default function WorksList() {
 	return (
 		<>
 			<Title title="works" />
-			<ul className="flex items-center justify-start flex-wrap">
+			<ul className="flex items-start md:items-center justify-start flex-wrap">
 				{links.map((link, index) => (
 					<motion.li
 						key={index}
@@ -88,7 +88,9 @@ export default function WorksList() {
 						animate={visibleIndexes.includes(index) ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.8, delay: index === 0 ? 1 : 1 + index * 0.5 }}
 					>
-						<a href={link.url} className="flex flex-col p-4">
+						<a
+							className="flex flex-col p-4"
+						>
 							<picture>
 								<source srcSet={link.imageWebp} type="image/webp" />
 								<img

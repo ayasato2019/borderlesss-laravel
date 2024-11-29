@@ -21,13 +21,6 @@ type Service = {
 export default function ServiceList() {
 	const service: Service[] = [
 		{
-			title: 'WebSite Design',
-			tool: 'Figma',
-			text: 'Simple but richly animated.',
-			imageJpg: serviseWebImageJpg,
-			imageWebp: serviseWebImageWebp,
-		},
-		{
 			title: 'FrontEnd',
 			tool: 'Visual Studio Code',
 			text: 'HTML, CSS, javascript, React, Next.js, PHP, WordPress, Docker, Git, Astro',
@@ -35,11 +28,18 @@ export default function ServiceList() {
 			imageWebp: serviseFrontendImageWebp,
 		},
 		{
-			title: 'App Developer',
+			title: 'App Dev',
 			tool: 'Visual Studio Code',
 			text: 'Laravel, React',
 			imageJpg: serviseAppImageJpg,
 			imageWebp: serviseAppImageWebp,
+		},
+		{
+			title: 'Web Design',
+			tool: 'Figma, Illustrator, PhotoShop, XD',
+			text: 'Simple but richly animated.',
+			imageJpg: serviseWebImageJpg,
+			imageWebp: serviseWebImageWebp,
 		},
 		{
 			title: 'Writing',
@@ -158,12 +158,12 @@ export default function ServiceList() {
 								</div>
 							</div>
 						</div>
-						<div className="skw-page__half skw-page__half--right w-1/2 left-1/2">
+						<div className="skw-page__half skw-page__half--right w-1/2  md:min-w-96 left-1/2">
 							<div className="skw-page__skewed h-full w-full">
 								<div className="skw-page__content p-5 pl-10 h-full flex flex-col gap-2 items-center justify-center w-2/3 text-center">
-									<h2 className="font-en text-5xl text-slate-500">{item.title}</h2>
-									<p className="font-en text-md text-slate-500">Tool:&nbsp;{item.tool}</p>
-									<p className="font-en text-md text-slate-950">{item.text}</p>
+									<h2 className="font-en text-xl md:text-5xl text-slate-500">{item.title}</h2>
+									<p className="font-en text-base md:text-md text-slate-500">Tool:&nbsp;{item.tool}</p>
+									<p className="font-en text-base md:text-md text-slate-950">{item.text}</p>
 								</div>
 							</div>
 						</div>

@@ -3,6 +3,7 @@ import { PageProps } from '@/types';
 import Fv from '../Components/Home/Fv';
 import WorksList from '../Components/Works/WorkList';
 import ServiceList from '../Components/Service/ServiceList';
+import BlogList from '../Components/Blog/BlogList';
 
 import { Head, Link } from '@inertiajs/react';
 import Header from '../Components/Header';
@@ -34,11 +35,14 @@ export default function Welcome({
                 <Header />
                 <main className="absolute top-0 left-0 w-full h-full min-h-screen">
                     <Fv />
-                    <div id='works' className="flex flex-col items-center justify-center flex-wrap min-h-screen">
+                    <div id='works' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <WorksList />
                     </div>
-                    <div id='service' className="flex flex-col items-center justify-center flex-wrap min-h-screen">
+                    <div id='service' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <ServiceList />
+                    </div>
+                    <div id='blog' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
+                        <BlogList />
                     </div>
                 </main>
                 <Footer />

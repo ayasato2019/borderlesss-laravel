@@ -49,7 +49,7 @@ body {
 }
 
 .header {
-	@apply fixed top-2 lg:top-8 left-1/2 translate-x-[-50%] rounded-[28px] z-10 w-[calc(100%-16px)] max-w-7xl bg-[rgba(226,232,240,.64)] shadow-md h-auto lg:h-14;
+	@apply fixed top-2 lg:top-8 left-1/2 translate-x-[-50%] rounded-[28px] z-20 w-[calc(100%-16px)] max-w-7xl bg-[rgba(226,232,240,.64)] shadow-md h-auto lg:h-14;
 	background-color: transparent;
 	background-image: radial-gradient(rgba(226,232,240,.64) 1px, transparent 1px);
 	background-size: 3px 3px;
@@ -93,7 +93,7 @@ body {
 * components
 *****************/
 .page-title {
-	@apply relative h-10 overflow-hidden mb-10;
+	@apply relative h-10 overflow-hidden mb-10 uppercase;
 }
 
 .page-title span{
@@ -478,86 +478,9 @@ body {
 }
 
 /****************
-* tab
+* blog
 *****************/
-
-.tab {
-	display: flex;
-	flex-wrap: wrap;
-	width: min(100%, 700px);
-	margin: 0 auto;
-}
-
-@media screen and (max-width: 768px) {
-	.tab {
-	display: flex;
-	flex-wrap: wrap;
-	}
-}
-
-.tab > label {
-	overfllow: hidden;
+.blog-card {
 	position: relative;
-	flex: 1 1;
-	order: -1;
-	min-width: 100px;
-	padding: .7em 1em .5em;
-	border-radius: 0;
-	font-size: .9em;
-	text-align: center;
-	cursor: pointer;
-	transition: .2s;
-	word-break: keep-all;
-}
-
-.tab > label:not(:checked) {
-border-bottom: 1px solid #020617;
-}
-
-.tab > label:hover {
-transition: .2s;
-}
-
-.tab > label::before {
-  @apply absolute block bottom-0 w-full bg-amber-500 ;
-  content: "";
-transform: scale(0,1);
-  left: 0;
-  height: 3px;
-transition: transform .2s;
-}
-
-.tab > label:hover::before {
-transform: scale(1,1);
-transition: transform .2s;
-}
-
-.tab input {
-  display: none;
-}
-
-.tab > div {
-  display: none;
-  width: 100%;
-  padding: 1.5em 1em;
-}
-
-.tab label:has(:checked) {
-  border-left: 1px solid #020617;
-  border-top: 1px solid #020617;
-  border-right: 1px solid #020617;
-border-bottom: 1px solid transparent;
-}
-
-.tab label:has(:checked) + div {
-  display: block;
-}
-
-@media (prefers-color-scheme: dark) {
-.tab label:has(:checked) {
-  border: 1px solid #fff;
-}
-.tab > label:not(:checked) {
-  border-bottom: 1px solid #FFF;
-}
+	clip-path: polygon(5% 0%, 100% 0, 100% 80%, 95% 100%, 0 100%, 0% 20%);
 }
