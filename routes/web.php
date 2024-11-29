@@ -19,6 +19,10 @@ Route::get('/works', function () {
     return Inertia::render('Works/app');
 })->name('works');
 
+Route::get('/about', function () {
+    return Inertia::render('About/app');
+})->name('about');
+
 Route::get('/service', function () {
     return Inertia::render('Service/app');
 })->name('service');
