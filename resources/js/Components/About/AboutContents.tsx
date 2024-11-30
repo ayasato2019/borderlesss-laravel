@@ -37,7 +37,7 @@ export default function Blog() {
                 </div>
 
                 <p className="mt-10 w-auto mx-auto text-center text-muted-foreground">I am a freelance front-end engineer. Web design is also available on request. Composite photography using Photoshop is also an area of expertise. I can also use Illustratore to create banners and icons.<br />I do POP dancing as a hobby.<br />Follow X if you think you'll hit it off, whether it's a hobby or a job.</p>
-                <p className="mt-5 w-auto mx-auto text-center text-muted-foreground">フリーランスのフロントエンドエンジニアです。Webデザインも承ります。<br />Photoshopを使った合成写真も得意分野です。Illustratoreを使ってバナーやアイコンを作ることもできます。趣味でPOPダンスをやっています。<br />趣味でも仕事でも、意気投合しそうならXをフォローしてください。</p>
+                <p className="mt-5 w-auto mx-auto text-center text-muted-foreground">フリーランスのフロントエンドエンジニアです。<br />Webデザインもご相談ください。<br />Photoshopを使った合成写真も得意です。Illustratoreを使ってバナーやアイコンを作ることもできます。趣味でPOPダンスをやっています。<br />趣味でも仕事でも、意気投合しそうならXをフォローしてください。</p>
             </div>
         </div>
     );
