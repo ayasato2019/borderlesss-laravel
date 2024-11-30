@@ -86,7 +86,7 @@ export default function WorksList() {
 						data-index={index}
 						initial={{ opacity: 0, y: 50 }}
 						animate={visibleIndexes.includes(index) ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.8, delay: index === 0 ? 1 : 1 + index * 0.5 }}
+						transition={{ duration: 0.5, delay: index === 0 ? 1 : 1 + index * 0.5 }}
 					>
 						<a
 							className="flex flex-col p-4"

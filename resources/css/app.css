@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import './reset.css' */
+
 @keyframes shrink-bounce {
 	0% {
 		transform: scale(1);
@@ -143,6 +145,9 @@ body {
 	}
 }
 
+/****
+* ロゴ
+****/
 .logo a:hover {
 	animation: glitc 2.5s infinite;
 }
@@ -163,10 +168,6 @@ body {
 	animation: glitch3 2.5s infinite;
 	content: "BORDERLESSS";
 }
-
-/****
-* ロゴ　ホバーアニメーション
-****/
 
 @keyframes glitc {
 	0% {
@@ -416,6 +417,16 @@ body {
 /**
 * home
 ******/
+#clip01 {
+	opacity: 0;
+	animation: fadeInUp 1.6s ease-out forwards;
+}
+
+.fv-text {
+	@apply font-en mt-4 text-white;
+	font-size: max(20px, 3.3333333vw);
+}
+
 @keyframes fadeInUp {
 	0% {
 		opacity: 0;
@@ -430,17 +441,22 @@ body {
 	}
 }
 
-/****************
-* home FV
-*****************/
-#clip01 {
-	opacity: 0;
-	animation: fadeInUp 1.6s ease-out forwards;
+.contents-fadeIn {
+	animation: contents-fadeIn linear both;
+	animation-timeline: view();
+	animation-range: entry 25% cover 50%;
 }
 
-.fv-text {
-	@apply font-en mt-4 text-white;
-	font-size: max(20px, 3.3333333vw);
+@keyframes contents-fadeIn {
+	from {
+		opacity: 0;
+		clip-path: inset(45% 20% 45% 20%);
+	}
+
+	to {
+		opacity: 1;
+		clip-path: inset(0% 0% 0% 0%);
+	}
 }
 
 /****************

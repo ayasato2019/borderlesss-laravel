@@ -1,10 +1,13 @@
-import githubIcon from '../../images/github-mark.svg'
+import githubIcon from '../../images/github-mark.svg';
 import twitterIcon from '../../images/x-logo.png';
 import zennIcon from '../../images/logo-zenn.svg';
 
-export default function SnsLinks() {
+type SnsLinksProps = {
+	tabIndex?: number;
+};
 
-	const links = [
+export default function SnsLinks({ tabIndex }: SnsLinksProps) {
+	const snsLinks = [
 		{
 			url: 'https://github.com/ayasato2019',
 			icon: githubIcon,
@@ -23,18 +26,19 @@ export default function SnsLinks() {
 	];
 
 	return (
-		<div className="flex gap-2 p-4 lg:p-0 lg:pr-4 items-center justify-center img:w-full img:h-full img:object-cover">
-			{links.map((link, index) => (
+		<div className="flex gap-2 p-4 lg:p-0 lg:pr-4 items-center justify-center">
+			{snsLinks.map((link, index) => (
 				<a
 					key={index}
 					href={link.url}
 					target="_blank"
 					rel="noopener noreferrer"
 					className="block w-10 h-10 overflow-hidden p-2 lg:p-0 max-w-20 hover:scale-120 transition-all lg:w-4 lg:h-4"
+					tabIndex={tabIndex !== undefined ? tabIndex + index : undefined}
 				>
 					<img src={link.icon} alt={link.alt} />
 				</a>
 			))}
 		</div>
-	)
+	);
 }

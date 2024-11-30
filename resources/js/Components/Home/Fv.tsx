@@ -3,7 +3,7 @@ import fvImage from '../../../images/bg-workplace.png';
 
 export default function HomeFv() {
 	return (
-		<div className="w-full h-full min-w-[320px] min-h-[448.82px] relative">
+		<div className="w-full h-full min-w-[320px] min-h-screen relative">
 			{/* <Parallax strength={300}> */}
 				<div className="absolute top-0 left-0 bottom-0 right-0 flex items-center justify-center mx-auto h-auto w-[min(560px,90vw)]">
 					{/* <Background> */}
