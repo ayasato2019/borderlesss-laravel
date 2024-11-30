@@ -4,13 +4,21 @@ export default function PrimaryButton({
     className = '',
     disabled,
     children,
+    href,
     ...props
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
+}: ButtonHTMLAttributes<HTMLButtonElement> & { href?: string }) {
+    const handleClick = () => {
+        if (href) {
+            window.location.href = href; // `href` に遷移
+        }
+    };
     return (
         <button
             {...props}
+            onClick={handleClick}
             className={
-                `inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900 ${
+                `mx-auto border bg-teal-600 !hover:bg-blue-700 font-en text-white select:border-rose-70
+                inline-flex items-center rounded-md border-transparent px-4 py-2 text-xs font-semibold uppercase tracking-widest transition duration-150 ease-in-out hover:bg-rose-700 focus:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2 active:bg-rose-700 ${
                     disabled && 'opacity-25'
                 } ` + className
             }
@@ -20,3 +28,26 @@ export default function PrimaryButton({
         </button>
     );
 }
+// import { ButtonHTMLAttributes } from 'react';
+
+// export default function PrimaryButton({
+//     className = '',
+//     disabled,
+//     children,
+//     ...props
+// }: ButtonHTMLAttributes<HTMLButtonElement>) {
+//     return (
+//         <button
+//             {...props}
+//             className={
+//                 `mx-auto border bg-teal-600 !hover:bg-blue-700 font-en text-white select:border-rose-70
+//                 inline-flex items-center rounded-md border-transparent px-4 py-2 text-xs font-semibold uppercase tracking-widest transition duration-150 ease-in-out hover:bg-rose-700 focus:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-offset-2 active:bg-rose-700 ${
+//                     disabled && 'opacity-25'
+//                 } ` + className
+//             }
+//             disabled={disabled}
+//         >
+//             {children}
+//         </button>
+//     );
+// }

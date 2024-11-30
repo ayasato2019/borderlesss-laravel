@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import { motion } from 'framer-motion'
 import { Link } from '@inertiajs/react';
 import SnsLinks from './SnsLinks';
@@ -12,6 +12,18 @@ export default function Header() {
     setIsJumping(true)
     setTimeout(() => setIsJumping(false), 300)
   }
+
+    useEffect(() => {
+    // メニューの開閉によるスクロール制御
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+        return () => {
+      document.body.style.overflow = ""; // クリーンアップ処理
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className="header">
@@ -40,6 +52,7 @@ export default function Header() {
         <nav
           className={`header-nav-wrap ${isMenuOpen ? 'active' : ''}`}
           aria-labelledby="main-navigation"
+          aria-hidden={isMenuOpen ? "false" : "true"}
         >
           <h2 className="sr-only">メインナビゲーション</h2>
           <ul className="w-auto flex flex-col flex-wrap lg:flex-row lg:justify-center lg:items-center gap-4 lg:gap-0 list-[''] mx-auto lg:mx-0" role="menu">

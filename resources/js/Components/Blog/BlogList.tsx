@@ -35,7 +35,7 @@ export default function BlogList() {
         <>
             <Title title="blog" />
             <p className="text-center">ZennにてTechブログ記載しています。</p>
-            <div className="h-auto w-[calc(100%-16px)] mx-auto my-9 flex flex-row flex-wrap gap-2">
+            <div className="container h-auto mx-auto my-9 flex flex-row flex-wrap gap-2">
                 {posts.map((post, index) => (
                     <motion.article
                         key={post.id}
