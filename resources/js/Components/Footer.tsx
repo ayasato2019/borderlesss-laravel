@@ -8,7 +8,7 @@ export default function Footer() {
 		{ page: "/service/" },
 		{ page: "/blog/" },
 		{ page: "/contact/" },
-		{ page: "/privacypolicy/" },
+		{ page: "/privacy-policy/" },
 	]
 	return (
 		// <footer className="fixed bottom-0 w-full bg-slate-500 text-white py-5">

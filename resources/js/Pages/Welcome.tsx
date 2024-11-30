@@ -5,10 +5,13 @@ import WorksList from '../Components/Works/WorkList';
 import ServiceList from '../Components/Service/ServiceList';
 import BlogList from '../Components/Blog/BlogList';
 import Coontact from '../Components/Contact/ContactContents';
+import interval from '../../images/bg-home-interval.jpg';
+import { Parallax } from "react-parallax";
 
 import { Head, Link } from '@inertiajs/react';
 import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+
+const image1 = interval;
 
 export default function Welcome({
     auth,
@@ -25,20 +28,6 @@ export default function Welcome({
         { page: "/privacypolicy/" },
     ]
 
-    const handleImageError = () => {
-        document
-            .getElementById('screenshot-container')
-            ?.classList.add('!hidden');
-        document.getElementById('docs-card')?.classList.add('!row-span-1');
-        document
-            .getElementById('docs-card-content')
-            ?.classList.add('!flex-row');
-        document.getElementById('background')?.classList.add('!hidden');
-    };
-    useEffect(() => {
-        document.title = 'home';
-    }, []);
-
     return (
         <>
             <Head title="Home" />
@@ -53,6 +42,12 @@ export default function Welcome({
                     <div id='service' className="snap-start contents-fadeIn flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <ServiceList />
                     </div>
+                    <div className="interval w-screen mx-[calc(50%-50vw)]">
+                    <Parallax bgImage={image1} strength={300}>
+                        <div style={{ height: 400 }}>
+                        </div>
+                    </Parallax>
+                    </div>
                     <div id='blog' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <BlogList />
                     </div>
@@ -60,7 +55,7 @@ export default function Welcome({
                         <Coontact />
                     </div>
                 </main>
-                <footer className="w-full bg-slate-500 text-white py-5">
+                <footer className="w-screen mx-[calc(50%-50vw)] px-[calc(50vw-50%)] bg-slate-500 text-white py-5">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-wrap justify-between items-center">
                             <h1 className="logo">

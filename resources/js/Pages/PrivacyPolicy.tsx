@@ -1,5 +1,6 @@
 import Layout from '../Layouts/GuestLayout';
 import Title from '../Components/PageTitle';
+import NavLink from '../Components/NavLink';
 import PrimaryButton  from '../Components/PrimaryButton';
 
 export default function PrivacyPolicy() {
@@ -49,8 +50,8 @@ export default function PrivacyPolicy() {
 
                 <h2 className="text-2xl font-semibold mt-6 mb-3">7. お問い合わせ先</h2>
                 <p className="mb-2">個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。</p>
-                <p className="mb-1">運営者名: [あなたの名前または会社名]</p>
-                <p className="mb-1">メールアドレス: [お問い合わせ用メールアドレス]</p>
+                <p className="mb-1">運営者名: BORDERLESSS</p>
+                <p className="mb-1">メールアドレス: <NavLink href="/services" active={true}>こちらから</NavLink></p>
                 <p className="mb-4">電話番号: [お問い合わせ用電話番号]</p>
 
                 <PrimaryButton

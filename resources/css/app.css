@@ -36,6 +36,10 @@
     }
 }
 
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+}
+
 body {
 	background-color: #ffffff;
 	background-image: linear-gradient(90deg, #E2E8F0 1px, transparent 1px), linear-gradient(#E2E8F0 1px, transparent 1px);
@@ -48,6 +52,8 @@ body {
 	-webkit-scroll-snap-type: mandatory;
 	-webkit-scroll-snap-points-y: repeat(100vh);
 	scroll-snap-type: y mandatory;
+	-ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .header {
@@ -94,6 +100,7 @@ body {
 /****************
 * components
 *****************/
+
 .page-title {
 	@apply relative h-10 overflow-hidden mb-10 uppercase;
 }
@@ -417,6 +424,7 @@ body {
 /**
 * home
 ******/
+
 #clip01 {
 	opacity: 0;
 	animation: fadeInUp 1.6s ease-out forwards;
