@@ -1,6 +1,28 @@
 import fvImage from '../../../images/bg-workplace.png';
+import { useEffect, useRef, useState } from 'react';
 
-export default function HomeFv() {
+interface ParallaxProps {
+	targetFactor?: number
+}
+
+
+export default function HomeFv(props: ParallaxProps) {
+	// useRefを使いdomを操作できるようにする
+	const domRef = useRef<HTMLDivElement>(null)
+	// targetFactorのデフォルト値を決めておく
+	const targetFactor = props.targetFactor ? props.targetFactor : 0.7
+	const [offsetY, setOffsetY] = useState(0);
+	const onScroll = () => {
+		if (domRef.current !== null) {
+			const scrollY = window.pageYOffset;
+			setOffsetY(scrollY * targetFactor * -1);
+		}
+	}
+
+	useEffect(() => {
+		document.addEventListener('scroll', onScroll)
+	})
+
 	return (
 		<div className="w-full h-full min-w-[320px] min-h-screen relative">
 			<div className="absolute top-0 left-0 bottom-0 right-0 flex items-center justify-center mx-auto h-auto w-[min(560px,90vw)]">
@@ -22,7 +44,12 @@ export default function HomeFv() {
 					/>
 				</svg>
 			</div>
-			<div className="absolute bottom-2 left-1/2 translate-x-[-50%] w-full px-8 break-keep mix-blend-difference text-center">
+			<div
+				style={{
+					transform: `translate(-50%, ${offsetY}px)`,
+				}}
+				ref={domRef}
+				className="absolute bottom-4 left-1/2 w-full px-8 break-keep mix-blend-difference text-center">
 				<p className="fv-text">Taking children's problems.</p>
 			</div>
 		</div>

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { PageProps } from '@/types';
 import Fv from '../Components/Home/Fv';
 import WorksList from '../Components/Works/WorkList';
