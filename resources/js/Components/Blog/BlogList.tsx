@@ -51,14 +51,14 @@ export default function BlogList() {
                             href={`https://zenn.dev/${post.path}`}
                             target="blank"
                             rel="noopener noreferrer"
-                            className="blog-card group border-spacing-0.5 flex flex-row gap-2 items-start w-full h-auto px-8 py-4 bg-slate-200 transition-all ease-in-out hover:bg-amber-500 hover:transition-all hover:ease-in-out hover:translate-y-[-20px]"
+                            className="blog-card group border-spacing-0.5 flex flex-row gap-2 items-start w-full h-auto px-8 py-4 bg-slate-200 transition-all ease-in-out focus:outline-none hover:bg-amber-500 focus:bg-amber-500 hover:transition-all hover:ease-in-out focus:translate-y-[-20px] hover:translate-y-[-20px]"
                         >
 							<p className='text-2xl'>{post.emoji}</p>
 							<div className="flex flex-col gap-2">
                             <h2 className="line-clamp-2 overflow-hidden text-ellipsis text-2xl group-hover:text-primary">{post.title}</h2>
                             <ConvertDate
 								convertDate={post.published_at}
-								className="group-hover:text-white" />
+								className="group-hover:text-white group-focus:text-white" />
 							</div>
                         </a>
                     </motion.article>

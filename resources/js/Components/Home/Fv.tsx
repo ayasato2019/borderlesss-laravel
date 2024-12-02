@@ -49,7 +49,7 @@ export default function HomeFv(props: ParallaxProps) {
 					transform: `translate(-50%, ${offsetY}px)`,
 				}}
 				ref={domRef}
-				className="absolute bottom-4 left-1/2 w-full px-8 break-keep mix-blend-difference text-center">
+				className="absolute bottom-[20%] left-1/2 w-full px-8 break-keep mix-blend-difference text-center">
 				<p className="fv-text">Taking children's problems.</p>
 			</div>
 		</div>
