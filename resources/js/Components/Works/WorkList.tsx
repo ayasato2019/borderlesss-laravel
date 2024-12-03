@@ -1,25 +1,25 @@
 import Title from '../PageTitle';
-// import ClientAImagePng from '../../../images/works-cliantA.png';
-// import ClientAImageWebp from '../../../images/works-cliantA.webp';
-// import ClientBImagePng from '../../../images/works-cliantB.png';
-// import ClientBImageWebp from '../../../images/works-cliantB.webp';
+import ClientAImagePng from '../../../images/works-cliantA.png';
+import ClientAImageWebp from '../../../images/works-cliantA.webp';
+import ClientBImagePng from '../../../images/works-cliantB.png';
+import ClientBImageWebp from '../../../images/works-cliantB.webp';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
-type Work = {
-	id: number;
-	url: string;
-	alt: string;
-	imagePng: string;
-	imageWebp: string;
-	comment: string;
-	hearing: boolean;
-	design: boolean;
-	coding: boolean;
-	domein: boolean;
-	serverUplode: boolean;
-	aftercare: boolean;
-};
+// type Work = {
+// 	id: number;
+// 	url: string;
+// 	alt: string;
+// 	imagePng: string;
+// 	imageWebp: string;
+// 	comment: string;
+// 	hearing: boolean;
+// 	design: boolean;
+// 	coding: boolean;
+// 	domein: boolean;
+// 	serverUplode: boolean;
+// 	aftercare: boolean;
+// };
 
 // Check boxの仕様
 type StatusIconProps = {
@@ -39,37 +39,37 @@ const StatusIcon = ({ status }: StatusIconProps) => {
 };
 
 export default function WorksList() {
-	// const works = [
-	// 	{
-	// 		url: 'https://oikawadoboku.co.jp/',
-	// 		imagePng: ClientAImagePng,
-	// 		imageWebp: ClientAImageWebp,
-	// 		alt: 'クライアントA様',
-	// 		hearing: true,
-	// 		design: true,
-	// 		coding: true,
-	// 		domein: true,
-	// 		serverUplode: true,
-	// 		aftercare: true,
-	// 		comment:
-	// 			'デザインからご依頼いただきました。\nGoogleのMyMap機能を使用し、地元周辺の工事実績を視覚的にわかるように工夫しています。',
-	// 	},
-	// 	{
-	// 		url: 'https://workplus-corp.jp/',
-	// 		imagePng: ClientBImagePng,
-	// 		imageWebp: ClientBImageWebp,
-	// 		alt: 'クライアントB様',
-	// 		hearing: false,
-	// 		design: false,
-	// 		coding: true,
-	// 		domein: true,
-	// 		serverUplode: true,
-	// 		aftercare: true,
-	// 		comment:
-	// 			'コーディングから参画させていただきました。\n要所でアニメーションを散りばめ、目を引くサイトに仕上がりました。\nデザイナーさんの成果物が綺麗なので、1pxもミスがないように心がけました。',
-	// 	},
-	// ];
-	const [works, setWorks] = useState<Work[]>([]);
+	const works = [
+		{
+			url: 'https://oikawadoboku.co.jp/',
+			imagePng: ClientAImagePng,
+			imageWebp: ClientAImageWebp,
+			alt: 'クライアントA様',
+			hearing: true,
+			design: true,
+			coding: true,
+			domein: true,
+			serverUplode: true,
+			aftercare: true,
+			comment:
+				'デザインからご依頼いただきました。\nGoogleのMyMap機能を使用し、地元周辺の工事実績を視覚的にわかるように工夫しています。',
+		},
+		{
+			url: 'https://workplus-corp.jp/',
+			imagePng: ClientBImagePng,
+			imageWebp: ClientBImageWebp,
+			alt: 'クライアントB様',
+			hearing: false,
+			design: false,
+			coding: true,
+			domein: true,
+			serverUplode: true,
+			aftercare: true,
+			comment:
+				'コーディングから参画させていただきました。\n要所でアニメーションを散りばめ、目を引くサイトに仕上がりました。\nデザイナーさんの成果物が綺麗なので、1pxもミスがないように心がけました。',
+		},
+	];
+	// const [works, setWorks] = useState<Work[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
 
@@ -92,26 +92,26 @@ export default function WorksList() {
 		return () => observer.disconnect();
 	}, []);
 
-	useEffect(() => {
-        // データ取得
-        fetch(route('api.works.index'))
-            .then(response => {
-                if (!response.ok) throw new Error('データ取得に失敗しました。');
-                return response.json();
-            })
-            .then(data => {
-                setWorks(data); // データを状態に保存
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error(error);
-                setLoading(false);
-            });
-    }, []);
+	// useEffect(() => {
+    //     // データ取得
+    //     fetch(route('api.works.index'))
+    //         .then(response => {
+    //             if (!response.ok) throw new Error('データ取得に失敗しました。');
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             setWorks(data); // データを状態に保存
+    //             setLoading(false);
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //             setLoading(false);
+    //         });
+    // }, []);
 
-	if (loading) {
-        return <div>ロード中...</div>; // ローディング中
-    }
+	// if (loading) {
+    //     return <div>ロード中...</div>; // ローディング中
+    // }
 
 	return (
 		<>

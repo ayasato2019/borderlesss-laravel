@@ -1,9 +1,17 @@
+import { Player } from "@lottiefiles/react-lottie-player";
+import Animation from "../../../json/Animation-technorogy2.json";
 
 export default function Mission() {
 
 	return (
-		<div className="container mx-auto px-4 py-8 flex flex-row items-center justify-center flex-wrap">
-			<canvas id="canvas-mission" className="w-full md:w-1/2 h-full"></canvas>
+		<div className="container mx-auto px-4 py-8 flex flex-row items-center justify-center flex-wrap gap-4">
+			<div id="canvas-mission" className="w-full md:w-[calc(50%-16px)] h-full">
+			<Player
+					src={Animation}
+					loop
+					autoplay
+				/>
+			</div>
 			<section className="w-full md:w-1/2">
 				<header className="relative mb-4">
 					<h2

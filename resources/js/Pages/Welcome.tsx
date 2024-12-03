@@ -3,9 +3,13 @@ import Fv from '../Components/Home/Fv';
 import WorksList from '../Components/Works/WorkList';
 import ServiceList from '../Components/Service/ServiceList';
 import BlogList from '../Components/Blog/BlogList';
+import Mission from '../Components/About/Mission';
+import Policy from '../Components/About/Policy';
+import WhyMe from '../Components/About/WhyMe';
 import Coontact from '../Components/Contact/ContactContents';
 import interval from '../../images/bg-home-interval.jpg';
 import { Parallax } from "react-parallax";
+import Title from '../Components/PageTitle';
 
 import { Head, Link } from '@inertiajs/react';
 import Header from '../Components/Header';
@@ -35,29 +39,30 @@ export default function Welcome({
                 {/* <main className="absolute top-0 left-0 w-full h-full min-h-screen"> */}
                 <main className="flex flex-col gap-20 w-full h-full min-h-screen scroll-snap-type-y mandatory">
                     <Fv />
-                    {/* <div id='mission' className="snap-start">
-
-                    </div>
-                    <div id='mission' className="snap-start">
-
-                    </div>
-                    <div id='mission' className="snap-start">
-
-                    </div> */}
                     <div id='works' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <WorksList />
                     </div>
-                    <div id='service' className="snap-start contents-fadeIn flex flex-col items-center justify-center flex-wrap min-h-screen">
+                    <div id='service' className="snap-start contents-fadeIn flex flex-col items-center justify-center flex-wrap min-h-[calc(100dvh+160px)]">
                         <ServiceList />
                     </div>
                     <div className="interval w-screen mx-[calc(50%-50vw)]">
-                    <Parallax bgImage={image1} strength={300}>
-                        <div style={{ height: 400 }}>
-                        </div>
-                    </Parallax>
+                        <Parallax bgImage={image1} strength={300}>
+                            <div style={{ height: 400 }}>
+                            </div>
+                        </Parallax>
                     </div>
                     <div id='blog' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <BlogList />
+                    </div>
+                    <Title title="about" />
+                    <div id='mission' className="snap-start">
+                        <Mission />
+                    </div>
+                    <div id='mission' className="snap-start">
+                        <Policy />
+                    </div>
+                    <div id='mission' className="snap-start">
+                        <WhyMe />
                     </div>
                     <div id='contact' className="snap-start flex flex-col items-center justify-center flex-wrap min-h-screen">
                         <Coontact />
