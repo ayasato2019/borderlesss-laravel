@@ -1,13 +1,29 @@
 import Title from '../PageTitle';
-import ClientAImagePng from '../../../images/works-cliantA.png';
-import ClientAImageWebp from '../../../images/works-cliantA.webp';
-import ClientBImagePng from '../../../images/works-cliantB.png';
-import ClientBImageWebp from '../../../images/works-cliantB.webp';
+// import ClientAImagePng from '../../../images/works-cliantA.png';
+// import ClientAImageWebp from '../../../images/works-cliantA.webp';
+// import ClientBImagePng from '../../../images/works-cliantB.png';
+// import ClientBImageWebp from '../../../images/works-cliantB.webp';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
+type Work = {
+	id: number;
+	url: string;
+	alt: string;
+	imagePng: string;
+	imageWebp: string;
+	comment: string;
+	hearing: boolean;
+	design: boolean;
+	coding: boolean;
+	domein: boolean;
+	serverUplode: boolean;
+	aftercare: boolean;
+};
+
+// Check boxの仕様
 type StatusIconProps = {
-	status: boolean; // 状態（trueまたはfalse）
+	status: boolean;
 };
 
 const StatusIcon = ({ status }: StatusIconProps) => {
@@ -23,37 +39,38 @@ const StatusIcon = ({ status }: StatusIconProps) => {
 };
 
 export default function WorksList() {
-	const links = [
-		{
-			url: 'https://oikawadoboku.co.jp/',
-			imagePng: ClientAImagePng,
-			imageWebp: ClientAImageWebp,
-			alt: 'クライアントA様',
-			hearing: true,
-			design: true,
-			coding: true,
-			domein: true,
-			serverUplode: true,
-			aftercare: true,
-			comment:
-				'デザインからご依頼いただきました。\nGoogleのMyMap機能を使用し、地元周辺の工事実績を視覚的にわかるように工夫しています。',
-		},
-		{
-			url: 'https://linkplus-corp.jp/',
-			imagePng: ClientBImagePng,
-			imageWebp: ClientBImageWebp,
-			alt: 'クライアントB様',
-			hearing: false,
-			design: false,
-			coding: true,
-			domein: true,
-			serverUplode: true,
-			aftercare: true,
-			comment:
-				'コーディングから参画させていただきました。\n要所でアニメーションを散りばめ、目を引くサイトに仕上がりました。\nデザイナーさんの成果物が綺麗なので、1pxもミスがないように心がけました。',
-		},
-	];
-
+	// const works = [
+	// 	{
+	// 		url: 'https://oikawadoboku.co.jp/',
+	// 		imagePng: ClientAImagePng,
+	// 		imageWebp: ClientAImageWebp,
+	// 		alt: 'クライアントA様',
+	// 		hearing: true,
+	// 		design: true,
+	// 		coding: true,
+	// 		domein: true,
+	// 		serverUplode: true,
+	// 		aftercare: true,
+	// 		comment:
+	// 			'デザインからご依頼いただきました。\nGoogleのMyMap機能を使用し、地元周辺の工事実績を視覚的にわかるように工夫しています。',
+	// 	},
+	// 	{
+	// 		url: 'https://workplus-corp.jp/',
+	// 		imagePng: ClientBImagePng,
+	// 		imageWebp: ClientBImageWebp,
+	// 		alt: 'クライアントB様',
+	// 		hearing: false,
+	// 		design: false,
+	// 		coding: true,
+	// 		domein: true,
+	// 		serverUplode: true,
+	// 		aftercare: true,
+	// 		comment:
+	// 			'コーディングから参画させていただきました。\n要所でアニメーションを散りばめ、目を引くサイトに仕上がりました。\nデザイナーさんの成果物が綺麗なので、1pxもミスがないように心がけました。',
+	// 	},
+	// ];
+	const [works, setWorks] = useState<Work[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
 	const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
 
 	useEffect(() => {
@@ -75,11 +92,32 @@ export default function WorksList() {
 		return () => observer.disconnect();
 	}, []);
 
+	useEffect(() => {
+        // データ取得
+        fetch(route('api.works.index'))
+            .then(response => {
+                if (!response.ok) throw new Error('データ取得に失敗しました。');
+                return response.json();
+            })
+            .then(data => {
+                setWorks(data); // データを状態に保存
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false);
+            });
+    }, []);
+
+	if (loading) {
+        return <div>ロード中...</div>; // ローディング中
+    }
+
 	return (
 		<>
 			<Title title="works" />
 			<ul className="flex items-start md:items-center justify-start flex-wrap">
-				{links.map((link, index) => (
+			{works.map((work, index) => (
 					<motion.li
 						key={index}
 						className="list-item w-full md:w-1/2"
@@ -92,10 +130,10 @@ export default function WorksList() {
 							className="flex flex-col p-4"
 						>
 							<picture>
-								<source srcSet={link.imageWebp} type="image/webp" />
+								<source srcSet={work.imageWebp} type="image/webp" />
 								<img
-									src={link.imagePng}
-									alt={link.alt}
+									src={work.imagePng}
+									alt={work.alt}
 									width={700}
 									height={400}
 									className="drop-shadow-lg w-full h-full object-contain"
@@ -104,7 +142,7 @@ export default function WorksList() {
 							</picture>
 							<div className="flex flex-col lg:flex-row gap-10 justify-center items-center mt-[-180px] px-5 pb-5 pt-52 bg-[rgba(226,232,240,0.7)]">
 								<p className="text-balloon">
-									{link.comment.split('\n').map((line, index) => (
+									{work.comment.split('\n').map((line, index) => (
 										<span key={index}>
 											{line}
 											<br />
@@ -114,7 +152,7 @@ export default function WorksList() {
 								<ul className="flex flex-col gap-1 items-start justify-start">
 									{['hearing', 'design', 'coding', 'domein', 'serverUplode', 'aftercare'].map((statusKey) => (
 										<li key={statusKey} className="flex flex-row justify-center items-center gap-1">
-											<StatusIcon status={link[statusKey as keyof typeof link]} />
+											<StatusIcon status={Boolean(work[statusKey as keyof typeof work])} />
 											<p>{statusKey}</p>
 										</li>
 									))}

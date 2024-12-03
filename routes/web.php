@@ -5,8 +5,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\WorkController;
 
 /* home */
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -62,9 +64,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    // プロフィール管理
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // 制作実績の管理（CRUD）
+    Route::prefix('dashboard/works')->name('dashboard.works.')->group(function () {
+        Route::get('/', [WorkController::class, 'index'])->name('index'); // 管理画面用一覧
+        Route::get('/create', [WorkController::class, 'create'])->name('create'); // 新規作成画面
+        Route::post('/', [WorkController::class, 'store'])->name('store'); // 新規作成処理
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
