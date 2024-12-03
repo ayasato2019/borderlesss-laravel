@@ -64,8 +64,8 @@ export default function Header() {
             <li className="w-auto h-auto lg:w-1/5">
               <Link href="/contact/" className="header-nav-link contact">CONTACT</Link>
             </li>
-            <li className="w-full">
-              <Link href="/privacy-policy/" className="flex p-4 lg:p-0 text-slate-500 font-en cursor-pointer ease-out break-keep h-full lg:h-auto justify-center lg:justify-start text-xs w-full lg:w-auto lg:absolute lg:top-[-24px] lg:right-28">Privacy Policy</Link>
+            <li className="w-full lg:w-auto static lg:absolute lg:top-[-24px] lg:right-28">
+              <Link href="/privacy-policy/" className="flex p-4 lg:p-0 text-slate-500 font-en cursor-pointer ease-out break-keep h-full lg:h-auto justify-center lg:justify-start text-xs w-full">Privacy Policy</Link>
             </li>
             <li className=' lg:absolute lg:right-2 lg:top-[-24px]'>
               <SnsLinks />
