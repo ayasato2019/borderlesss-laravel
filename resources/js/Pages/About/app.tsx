@@ -1,12 +1,22 @@
 import Layout from '../../Layouts/GuestLayout';
-import About from '../../Components/About/AboutContents';
+import AboutContents from '../../Components/About/AboutContents';
+import Mission from '../../Components/About/Mission';
+import Policy from '../../Components/About/Policy';
+import WhyMe from '../../Components/About/WhyMe';
 import SnsLinks from '../../Components/SnsLinks';
+// import AnimatedCurtain from'../../Components/AnimatedCurtain'
 
-export default function Blog() {
+export default function About() {
     return (
         <Layout>
-            <About />
-            <SnsLinks />
-        </Layout>
+        {/* <AnimatedCurtain /> */}
+        <div id="blog-content">
+          <AboutContents />
+          <Mission />
+          <Policy />
+          <WhyMe />
+          <SnsLinks />
+        </div>
+      </Layout>
     );
 }
