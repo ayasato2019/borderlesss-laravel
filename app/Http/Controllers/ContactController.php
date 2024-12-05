@@ -27,8 +27,8 @@ class ContactController extends Controller
         // return Inertia::render('Contact/confirm', [
         //     'data' => $request->all()
         // ]);    
-        return response()->json([
-            'redirectUrl' => route('contact.confirm'),
+        return Inertia::render('Contact/confirm', [
+            'data' => $request->all()
         ]);
     }
 
@@ -52,6 +52,7 @@ class ContactController extends Controller
         Session::forget('contactData');
 
         // 完了画面を表示
-        return Inertia::render('Contact/thanks');
+        // return Inertia::render('Contact/thanks');
+        return redirect()->route('contact.thanks');
     }
 }
