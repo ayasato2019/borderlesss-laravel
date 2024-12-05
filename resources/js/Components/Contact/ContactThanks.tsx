@@ -4,14 +4,6 @@ import PrimaryButton from '../PrimaryButton';
 import SnsLinks from '../../Components/SnsLinks';
 
 export default function ThanksContents() {
-	const [formData] = useState({
-		inquiryType: 'estimate', // 仮の値を設定（送信されたデータが格納されている前提）
-		companyType: 'individual',
-		companyName: '会社名株式会社',
-		name: '山田 太郎',
-		email: 'yamada@example.com',
-		message: '見積もりの依頼です。'
-	});
 
 	return (
 		<>

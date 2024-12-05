@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\ContactController;
 
 /* home */
 
@@ -43,15 +44,10 @@ Route::get('/zenn/articles', function () {
 });
 
 /* conact */
-Route::get('/contact', function () {
-    return Inertia::render('Contact/app');
-})->name('contact');
-Route::get('/contact/confirm', function () {
-    return Inertia::render('Contact/confirm');
-})->name('contact.confirm');
-Route::get('/contact/thanks', function () {
-    return Inertia::render('Contact/thanks');
-})->name('contact.thanks');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+Route::post('/contact/thanks', [ContactController::class, 'send'])->name('contact.thanks');
+
 
 /* privacyplicy */
 Route::get('/privacy-policy', function () {
