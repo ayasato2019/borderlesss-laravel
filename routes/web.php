@@ -46,8 +46,7 @@ Route::get('/zenn/articles', function () {
 /* conact */
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
-Route::get('/contact/thanks', [ContactController::class, 'send'])->name('contact.thanks');
-
+Route::post('/contact/thanks', [ContactController::class, 'send'])->name('contact.thanks');
 
 /* privacyplicy */
 Route::get('/privacy-policy', function () {

@@ -21,38 +21,30 @@ class ContactController extends Controller
     public function confirm(ContactFormRequest $request)
     {
         // 入力されたデータをセッションに保存
-        $request->session()->put('contactData', $request->all());
+        // $request->session()->put('contactData', $request->all());
 
         // 確認ページを表示
-        // return Inertia::render('Contact/confirm', [
-        //     'data' => $request->all()
-        // ]);    
         return Inertia::render('Contact/confirm', [
             'data' => $request->all()
-        ]);
+        ]);    
     }
 
     // 送信処理
     public function send(ContactFormRequest $request)
     {
-        // セッションからデータを取得
-        $contact = Session::get('contactData');
-        
-        // データが存在しない場合はフォーム画面へリダイレクト
-        if (!$contact) {
-            return redirect()->route('contact.index')->withErrors('確認画面のデータがありません');
-        }
+        $contact = $request->all();
 
         // メール送信
         $fromAddress = env('MAIL_FROM_ADDRESS');
         Mail::to($fromAddress)->send(new ContactSendmail($contact));
-
+    
         // セッションのデータをクリア
         $request->session()->regenerateToken();  // CSRFトークン再生成
         Session::forget('contactData');
-
-        // 完了画面を表示
-        // return Inertia::render('Contact/thanks');
-        return redirect()->route('contact.thanks');
+    
+        // 完了画面を表示（送信後にGETメソッドで遷移）
+        return Inertia::render('Contact/thanks', [
+            'data' => $contact // 送信したデータを渡す
+        ]); 
     }
 }

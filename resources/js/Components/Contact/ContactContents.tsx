@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Title from '../PageTitle';
 import InputLabel from '../InputLabel';
 import TextInput from '../TextInput';
@@ -24,8 +24,9 @@ export default function ContactContents() {
 		email: '',
 		message: ''
 	});
-
 	const [errors, setErrors] = useState<Partial<FormData>>({});
+	const metaCsrfToken = document.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
+	const csrfToken = useRef<string>(metaCsrfToken.content);
 
 	// input のnameを取得する
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -36,39 +37,11 @@ export default function ContactContents() {
 		}));
 	};
 
-	//データ保存
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		try {
-			const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
-
-			const response = await fetch('/contact/confirm', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'X-CSRF-TOKEN': csrfToken || '',
-				},
-				body: JSON.stringify(formData),
-			});
-
-			if (response.ok) {
-				const data = await response.json();
-				// サーバーから返されたURLに遷移
-				// window.location.href = data.redirectUrl;
-				// console.log('OK');
-			} else {
-				const errorData = await response.json();
-				setErrors(errorData.errors || {});
-			}
-		} catch (error) {
-			console.error("送信エラー:", error);
-		}
-	};
-
 	return (
 		<>
 			<Title title="contact" />
-			<form onSubmit={handleSubmit} action="/contact/confirm" method="POST" className="space-y-6 p-6 max-w-3xl mx-auto">
+			<form action="/contact/confirm" method="POST" className="space-y-6 p-6 max-w-3xl mx-auto">
+				<input type="hidden" name="_token" value={csrfToken.current} />
 				<div className="grid grid-cols-1 gap-5">
 					<div className="">
 						<InputLabel htmlFor="inquiryType" className="block mb-2 font-medium text-lg focus:outline-none">お問い合わせ種類 <span className="text-red-500">*</span></InputLabel>
@@ -81,9 +54,10 @@ export default function ContactContents() {
 							required
 						>
 							<option disabled value="">選択してください</option>
-							<option value="estimate">見積もり</option>
-							<option value="participation">参画依頼</option>
-							<option value="other">その他</option>
+							<option value="見積もり">見積もり</option>
+							<option value="ご相談">ご相談</option>
+							<option value="チーム参画依頼">チーム参画依頼</option>
+							<option value="その他">その他</option>
 						</select>
 						{errors.inquiryType && <p className="text-red-500 text-sm">{errors.inquiryType}</p>}
 					</div>
@@ -98,8 +72,8 @@ export default function ContactContents() {
 							required
 						>
 							<option disabled value="">選択してください</option>
-							<option value="individual">個人</option>
-							<option value="corporation">法人</option>
+							<option value="個人">個人</option>
+							<option value="法人">法人</option>
 						</select>
 						{errors.companyType && <p className="text-red-500 text-sm">{errors.companyType}</p>}
 					</div>
