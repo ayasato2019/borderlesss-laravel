@@ -35,53 +35,6 @@ class ContactSendmail extends Mailable
     }
 
     /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME', 'Default Name')),
-            subject: 'お問い合わせを受け付けました。 | BORDERLESSS'
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        $messageBody = <<<EOT
-        {$this->companyName} {$this->name} 様
-    
-        この度はお問い合わせいただきありがとうございます。
-    
-        お問合せいただいた内容は下記のとおりです。
-        【お問い合わせ種類】：{$this->inquiryType}
-        【個人・法人】：{$this->companyType}
-        【会社名】：{$this->companyName}
-        【メールアドレス】：{$this->email}
-        【お名前】：{$this->name}
-        【メッセージ】：{$this->message}
-    
-        確認次第、ご連絡させていただきます。
-        なお、ツール等の営業に関しましては申し訳ございません。返信は控えさせていただきますのでご了承ください。
-    
-    
-        --------------------
-        BORDERLESSS
-        担当 佐藤
-        --------------------
-        EOT;
-    
-        return new Content(
-            // ここで直接テキストのコンテンツを返す
-            text: $messageBody, // プレーンテキストメールの場合
-            // もしくはHTMLコンテンツを返すことも可能
-            // html: $messageBody
-        );
-    }
-
-    /**
      * Get the attachments for the message.
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
@@ -89,5 +42,27 @@ class ContactSendmail extends Mailable
     public function attachments(): array
     {
         return [];
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this
+        ->to($this->email)
+        ->from(env('MAIL_FROM_ADDRESS', 'default@example.com'), env('MAIL_FROM_NAME', 'Default Name'))
+        ->subject('【自動送信】お問合せをつけつけました | BORDERLESSS')
+        ->view('contact.mail')
+        ->with([
+            'inquiryType' => $this->inquiryType,
+            'companyType' => $this->companyType,
+            'companyName' => $this->companyName,
+            'email' => $this->email,
+            'name' => $this->name,
+            'comment' => $this->message,
+        ]);
     }
 }
