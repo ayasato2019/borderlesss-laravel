@@ -3,15 +3,6 @@ import Title from '../PageTitle';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
 
-interface ContactData {
-  inquiryType: string;
-  companyType: string;
-  companyName: string;
-  name: string;
-  email: string;
-  message: string;
-}
-
 export default function ConfirmContents({ data }: { data: ContactData }) {
   const [contact, setContact] = useState<ContactData>({
     inquiryType: '',

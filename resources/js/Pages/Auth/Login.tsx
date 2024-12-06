@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
-import SecondaryButton from '@/Components/SecondaryButton';
+import SecondaryLink from '@/Components/SecondaryLink';
 
 export default function Login({
     status,
@@ -89,14 +89,14 @@ export default function Login({
                 </div>
 
                 <div className="mt-4 flex items-center justify-end gap-2">
-                    {canResetPassword && (
-                        <SecondaryButton
-                            href={route('password.request')}
+                    {/* {canResetPassword && (
+                        <SecondaryLink
+                        href=""
                             className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
                             password ?
-                        </SecondaryButton>
-                    )}
+                        </SecondaryLink>
+                    )} */}
 
                     <PrimaryButton disabled={processing}>
                         Log in
