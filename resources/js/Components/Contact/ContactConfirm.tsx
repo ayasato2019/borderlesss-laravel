@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Title from '../PageTitle';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
@@ -12,7 +12,7 @@ interface ContactData {
 	message: string
 }
 
-export default function ConfirmContents() {
+export default function ConfirmContents({ data }: { data: any }) {
 	const [contact, setContact] = useState<ContactData>({
 		inquiryType: '',
 		companyType: '',
@@ -21,51 +21,22 @@ export default function ConfirmContents() {
 		email: '',
 		message: ''
 	});
+	const metaCsrfToken = document.querySelector("meta[name='csrf-token']") as HTMLMetaElement;
+	const csrfToken = useRef<string>(metaCsrfToken.content);
 
 	useEffect(() => {
-		// sessionStorageからデータを取得
-		const storedData = sessionStorage.getItem('contactData');
-		if (storedData) {
-			setContact(JSON.parse(storedData));
+		if (data) {
+		  setContact(data); // 親から受け取ったdataを状態にセット
 		}
-	}, []);
-
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		try {
-			const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
-				|| sessionStorage.getItem('csrfToken');
-
-			const response = await fetch('/contact/thanks', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'X-CSRF-TOKEN': csrfToken || '',
-				},
-				body: JSON.stringify(contact),
-			});
-
-			if (response.ok) {
-				console.log('OK');
-			} else {
-				console.error('送信エラー');
-			}
-		} catch (error) {
-			console.error('送信エラー:', error);
-		}
-	};
-
+	  }, [data]);
+	  console.log({contact});
 
 	return (
 		<>
 			<Title title="contact" />
 			<div className="space-y-6 p-6 w-auto max-w-5xl mx-auto">
-				<form onSubmit={handleSubmit} action="/contact/thanks" method="POST">
-					<input
-						type="hidden"
-						name="_token"
-						value={document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''}
-					/>
+				<form action="/contact/thanks" method="POST">
+					<input type="hidden" name="_token" value={csrfToken.current} />
 					<div className="grid grid-cols-1 gap-5 w-full h-auto">
 						<div>
 							<p className="block mb-1 font-medium text-md text-slate-500 focus:outline-none">お問い合わせ種類</p>

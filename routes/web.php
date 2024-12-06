@@ -48,7 +48,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 Route::post('/contact/thanks', [ContactController::class, 'send'])->name('contact.thanks');
 
-
 /* privacyplicy */
 Route::get('/privacy-policy', function () {
     return Inertia::render('PrivacyPolicy');
