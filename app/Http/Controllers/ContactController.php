@@ -18,19 +18,17 @@ class ContactController extends Controller
     }
 
     // 確認画面の表示（POSTメソッド）
-    public function confirm(ContactFormRequest $request)
+    public function confirm(Request $request)
     {
-        // 入力されたデータをセッションに保存
-        // $request->session()->put('contactData', $request->all());
-
         // 確認ページを表示
+        $contact = $request->all();
         return Inertia::render('Contact/confirm', [
-            'data' => $request->all()
-        ]);    
+            'data' => $contact
+        ]);
     }
 
     // 送信処理
-    public function send(ContactFormRequest $request)
+    public function send(Request $request)
     {
         $contact = $request->all();
 
@@ -38,13 +36,13 @@ class ContactController extends Controller
         $fromAddress = env('MAIL_FROM_ADDRESS');
         Mail::to($fromAddress)->send(new ContactSendmail($contact));
     
-        // セッションのデータをクリア
-        $request->session()->regenerateToken();  // CSRFトークン再生成
-        Session::forget('contactData');
+        // セッションのデータを渡す
+        $request->session()->regenerateToken();
+        $request->session()->forget('contact_form_data');
     
-        // 完了画面を表示（送信後にGETメソッドで遷移）
+        // 完了画面を表示
         return Inertia::render('Contact/thanks', [
-            'data' => $contact // 送信したデータを渡す
-        ]); 
+            'data' => $contact
+        ]);
     }
 }
