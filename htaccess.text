@@ -1,0 +1,48 @@
+#AuthType Basic
+#AuthName "Input your ID and Password."
+#AuthUserFile "/home/borderlesss/borderlesss.net//htpasswd/.htpasswd"
+#require valid-user
+
+#<Files wp-login.php>
+#order deny,allow
+#deny from all
+#allow from 209.17.70.214
+#</Files>
+# RewriteEngine on
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+# SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
+
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# RewriteBase /
+# RewriteRule ^index\.php$ - [L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /index.php [L]
+# </IfModule>
+
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteRule ^(.*)$ borderlesss-laravel/public/$1 [QSA,L]
+# </IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /borderlesss-laravel/public/$1 [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /borderlesss-laravel/public/index.php [L]
+</IfModule>
+
+
+# END WordPress
+
+ssh -l borderlesss -i ~/.ssh/borderlesss.key borderlesss.xsrv.jp -p 10022
+
+history
