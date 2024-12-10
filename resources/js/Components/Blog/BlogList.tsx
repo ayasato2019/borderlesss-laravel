@@ -37,15 +37,16 @@ export default function BlogList() {
             <p className="text-center">ZennにてTechブログ記載しています。</p>
             <div className="container h-auto mx-auto my-9 flex flex-row flex-wrap gap-2">
                 {posts.map((post, index) => (
-                    <motion.article
+                    <article
                         key={post.id}
                         className="w-full h-auto md:w-[calc(50%-4px)] "
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: index * 0.2, // 順番に遅延を追加
-                        }}
+                        // initial={{ opacity: 0, y: 50 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // transition={{
+                        //     duration: 0.6,
+                        //     delay: index * 0.2, // 順番に遅延を追加
+                        // }
+                    // }
                     >
                         <a
                             href={`https://zenn.dev/${post.path}`}
@@ -61,7 +62,7 @@ export default function BlogList() {
 								className="group-hover:text-white group-focus:text-white" />
 							</div>
                         </a>
-                    </motion.article>
+                    </article>
                 ))}
             </div>
         </>
