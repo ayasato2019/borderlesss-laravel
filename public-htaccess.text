@@ -1,17 +1,13 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
+    # <IfModule mod_negotiation.c>
+    #     Options -MultiViews -Indexes
+    # </IfModule>
 
-    # HTTPS強制
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteEngine On
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect /public URLを隠す
-    RewriteCond %{THE_REQUEST} /public/([^\s]*) [NC]
-    RewriteRule ^ /%1 [L,R=301]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
