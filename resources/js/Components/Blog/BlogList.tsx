@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Title from '../PageTitle';
 import ConvertDate from './ConvertDate';
-import { motion } from 'framer-motion';
 
 export type ZennItem = {
     id: number;
@@ -21,8 +20,7 @@ export default function BlogList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const apiUrl = process.env.APP_URL || 'http://localhost';
-                const res = await fetch('${apiUrl}/zenn/articles');
+                const res = await fetch('/zenn/articles');
                 const data: ZennResponse = await res.json();
                 setPosts(data.articles.slice(0, 10));
             } catch (error) {
@@ -50,7 +48,7 @@ export default function BlogList() {
                     // }
                     >
                         <a
-                            href={`https://zenn.dev/${post.path}`}
+                            href={`https://zenn.dev${post.path}`}
                             target="blank"
                             rel="noopener noreferrer"
                             className="blog-card group border-spacing-0.5 flex flex-row gap-2 items-start w-full h-auto px-8 py-4 bg-slate-200 transition-all ease-in-out focus:outline-none hover:bg-amber-500 focus:bg-amber-500 hover:transition-all hover:ease-in-out focus:translate-y-[-20px] hover:translate-y-[-20px]"
