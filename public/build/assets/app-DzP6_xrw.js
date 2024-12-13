@@ -1,1 +1,0 @@
-import{j as r}from"./app-CV3cJ1Gr.js";import{G as t}from"./GuestLayout-C-XMIRMk.js";import{W as o}from"./WorkList-C6F2rLQV.js";import"./app-D5RdPmV-.js";import"./Header-CpGw5rLb.js";import"./PageTitle-DO1FvE7m.js";function f(){return r.jsx(t,{children:r.jsx(o,{})})}export{f as default};
