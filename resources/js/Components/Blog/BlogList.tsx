@@ -21,7 +21,7 @@ export default function BlogList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/zenn/articles');
+                const res = await fetch('https://borderlesss.net/blog');
                 const data: ZennResponse = await res.json();
                 setPosts(data.articles.slice(0, 10));
             } catch (error) {
