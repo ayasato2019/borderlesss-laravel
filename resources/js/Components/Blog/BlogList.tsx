@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Title from '../PageTitle';
 import ConvertDate from './ConvertDate';
+// import { motion } from 'framer-motion';
 
 export type ZennItem = {
     id: number;
