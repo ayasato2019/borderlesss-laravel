@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Title from '../PageTitle';
 import ConvertDate from './ConvertDate';
-// import { motion } from 'framer-motion';
 
 export type ZennItem = {
     id: number;
@@ -35,19 +34,11 @@ export default function BlogList() {
         <>
             <Title title="blog" />
             <p className="text-center">ZennにてTechブログ記載しています。</p>
-            <a href='https://zenn.dev/api/articles'>テスト</a>
             <div className="container h-auto mx-auto my-9 flex flex-row flex-wrap gap-2">
                 {posts.map((post, index) => (
                     <article
                         key={post.id}
                         className="w-full h-auto md:w-[calc(50%-4px)] "
-                        // initial={{ opacity: 0, y: 50 }}
-                        // animate={{ opacity: 1, y: 0 }}
-                        // transition={{
-                        //     duration: 0.6,
-                        //     delay: index * 0.2, // 順番に遅延を追加
-                        // }
-                    // }
                     >
                         <a
                             href={`https://zenn.dev${post.path}`}

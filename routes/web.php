@@ -43,6 +43,16 @@ Route::get('/zenn/articles', function () {
     return response()->json($response->json());
 });
 
+// Route::get('/zenn/articles', function () {
+//     try {
+//         $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
+//         return response()->json($response->json());
+//     } catch (\Exception $e) {
+//         Log::error('APIリクエストエラー: ' . $e->getMessage());
+//         return response()->json(['error' => 'データ取得に失敗しました'], 500);
+//     }
+// });
+
 /* conact */
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');

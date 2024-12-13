@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'zenn/articles'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://borderlesss.net/'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
