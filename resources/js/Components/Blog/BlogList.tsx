@@ -17,15 +17,38 @@ export type ZennResponse = {
 export default function BlogList() {
     const [posts, setPosts] = useState<ZennItem[]>([]);
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const res = await fetch('/zenn/articles');
+    //         const data: ZennResponse = await res.json();
+    //         setPosts(data.articles.slice(0, 10));
+    //         console.log(data);
+    //     };
+    //     fetchData();
+    // }, []);
+
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('/zenn/articles');
-            const data: ZennResponse = await res.json();
-            setPosts(data.articles.slice(0, 10));
-            console.log(data);
+            try {
+                const res = await fetch('/zenn/articles');
+                if (!res.ok) {
+                    throw new Error('ネットワークエラー');
+                }
+                const data: ZennResponse = await res.json();
+                setPosts(data.articles.slice(0, 10));
+            } catch (error) {
+                // 型アサーションで error を Error 型として扱う
+                if (error instanceof Error) {
+                    console.error('エラー:', error.message);
+                } else {
+                    console.error('予期しないエラーが発生しました');
+                }
+                // ここでエラーハンドリングやユーザーへのエラーメッセージ表示を行う
+            }
         };
         fetchData();
     }, []);
+    
 
     return (
         <>
