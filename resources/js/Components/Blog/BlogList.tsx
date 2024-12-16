@@ -19,13 +19,10 @@ export default function BlogList() {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const res = await fetch('/zenn/articles');
-                const data: ZennResponse = await res.json();
-                setPosts(data.articles.slice(0, 10));
-            } catch (error) {
-                console.error('データ取得エラー:', error);
-            }
+            const res = await fetch('/zenn/articles');
+            const data: ZennResponse = await res.json();
+            setPosts(data.articles.slice(0, 10));
+            console.log(data);
         };
         fetchData();
     }, []);
