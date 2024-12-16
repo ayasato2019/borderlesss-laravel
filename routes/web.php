@@ -44,7 +44,7 @@ Route::get('/blog', function () {
 //     return response()->json($response->json());
 // });
 
-Route::get('/zenn/articles', function () {
+Route::get('api/blog', function () {
     try {
         $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
         

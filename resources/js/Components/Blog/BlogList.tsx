@@ -16,7 +16,6 @@ export type ZennResponse = {
 
 export default function BlogList() {
     const [posts, setPosts] = useState<ZennItem[]>([]);
-
     // useEffect(() => {
     //     const fetchData = async () => {
     //         const res = await fetch('/zenn/articles');
@@ -30,14 +29,13 @@ export default function BlogList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/zenn/articles');
+                const res = await fetch('api/blog');
                 if (!res.ok) {
                     throw new Error('ネットワークエラー');
                 }
                 const data: ZennResponse = await res.json();
                 setPosts(data.articles.slice(0, 10));
             } catch (error) {
-                // 型アサーションで error を Error 型として扱う
                 if (error instanceof Error) {
                     console.error('エラー:', error.message);
                 } else {
@@ -45,9 +43,10 @@ export default function BlogList() {
                 }
             }
         };
+        
         fetchData();
     }, []);
-    
+
 
     return (
         <>
@@ -61,7 +60,7 @@ export default function BlogList() {
                     >
                         <a
                             href={`https://zenn.dev${post.path}`}
-                            target="blank"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="blog-card group border-spacing-0.5 flex flex-row gap-2 items-start w-full h-auto px-8 py-4 bg-slate-200 transition-all ease-in-out focus:outline-none hover:bg-amber-500 focus:bg-amber-500 hover:transition-all hover:ease-in-out focus:translate-y-[-20px] hover:translate-y-[-20px]"
                         >
