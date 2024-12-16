@@ -43,7 +43,6 @@ export default function BlogList() {
                 } else {
                     console.error('予期しないエラーが発生しました');
                 }
-                // ここでエラーハンドリングやユーザーへのエラーメッセージ表示を行う
             }
         };
         fetchData();
