@@ -1,1 +1,0 @@
-import{j as o}from"./app-CBmxW9MI.js";import{G as t}from"./GuestLayout-BBMIwJB2.js";import{B as r}from"./BlogList-ttxlgaew.js";import{S as s}from"./Header-DyZXW-v0.js";import"./app-D5RdPmV-.js";import"./PageTitle-g23Y0PaP.js";function a(){return o.jsx(t,{children:o.jsxs("div",{id:"blog-content",children:[o.jsx(r,{}),o.jsx(s,{})]})})}export{a as default};
