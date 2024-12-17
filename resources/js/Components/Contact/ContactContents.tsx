@@ -40,7 +40,7 @@ export default function ContactContents() {
 	return (
 		<>
 			<Title title="contact" />
-			<form action="/contact/confirm" method="POST" className="space-y-6 p-6 max-w-3xl mx-auto">
+			{/* <form action="/contact/confirm" method="POST" className="space-y-6 p-6 max-w-3xl mx-auto">
 				<input type="hidden" name="_token" value={csrfToken.current} />
 				<div className="grid grid-cols-1 gap-5">
 					<div className="">
@@ -130,7 +130,13 @@ export default function ContactContents() {
 					</div>
 					<PrimaryButton type="submit">go to confirm</PrimaryButton>
 				</div>
-			</form>
+			</form> */}
+				<script id="_bownow_cs_sid_eeea248f766692fcb45b">
+				var _bownow_cs_sid_eeea248f766692fcb45b = document.createElement('script');
+				_bownow_cs_sid_eeea248f766692fcb45b.charset = 'utf-8';
+				_bownow_cs_sid_eeea248f766692fcb45b.src = 'https://contents.bownow.jp/forms/sid_eeea248f766692fcb45b/trace.js';
+				document.getElementsByTagName('head')[0].appendChild(_bownow_cs_sid_eeea248f766692fcb45b);
+				</script>
 		</>
 	);
 }
