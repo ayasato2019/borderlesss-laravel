@@ -50,7 +50,7 @@ export default function BlogList() {
             axios.get('/api/blog', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest',
+                    // 'X-Requested-With': 'XMLHttpRequest',
                 },
             })
             .then(response => {
