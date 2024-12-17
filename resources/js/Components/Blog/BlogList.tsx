@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Title from '../PageTitle';
 import ConvertDate from './ConvertDate';
 
@@ -26,25 +27,38 @@ export default function BlogList() {
     //     fetchData();
     // }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch('api/blog');
-                if (!res.ok) {
-                    throw new Error('ネットワークエラー');
-                }
-                const data: ZennResponse = await res.json();
-                setPosts(data.articles.slice(0, 10));
-            } catch (error) {
-                if (error instanceof Error) {
-                    console.error('エラー:', error.message);
-                } else {
-                    console.error('予期しないエラーが発生しました');
-                }
-            }
-        };
+    // useEffect(() => {
+        // const fetchData = async () => {
+        //     try {
+        //         const res = await fetch('api/blog');
+        //         if (!res.ok) {
+        //             throw new Error('ネットワークエラー');
+        //         }
+        //         const data: ZennResponse = await res.json();
+        //         setPosts(data.articles.slice(0, 10));
+        //     } catch (error) {
+        //         if (error instanceof Error) {
+        //             console.error('エラー:', error.message);
+        //         } else {
+        //             console.error('予期しないエラーが発生しました');
+        //         }
+        //     }
+        // };
         
-        fetchData();
+        // fetchData();
+        useEffect(() => {
+            axios.get('/api/blog', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => {
+                console.log(response.data); // 取得したデータを処理
+            })
+            .catch(error => {
+                console.error('Error fetching blog data:', error);
+            });
     }, []);
 
 

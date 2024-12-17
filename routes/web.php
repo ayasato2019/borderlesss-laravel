@@ -64,7 +64,6 @@ Route::get('api/blog', function () {
 });
 
 /* conact */
-// Route::view("/contact", "contact.app");
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 Route::post('/contact/thanks', [ContactController::class, 'send'])->name('contact.thanks');
