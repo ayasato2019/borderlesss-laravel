@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\ApiController;
 
 /* home */
 
@@ -39,10 +40,6 @@ Route::get('/service', function () {
 Route::get('/blog', function () {
     return Inertia::render('Blog/app');
 })->name('blog');
-// Route::get('/zenn/articles', function () {
-//     $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
-//     return response()->json($response->json());
-// });
 
 Route::get('api/blog', function () {
     try {
@@ -63,8 +60,8 @@ Route::get('api/blog', function () {
         Log::error('APIリクエストエラー: ' . $e->getMessage());
         return response()->json(['error' => 'データ取得に失敗しました'], 500);
     }
+    dd($response);
 });
-
 
 /* conact */
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
