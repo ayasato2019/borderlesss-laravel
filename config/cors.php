@@ -17,7 +17,7 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'], // 使用するパスを設定
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://zenn.dev'],
     'allowed_headers' => ['*'],
     // 'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept'], // 'X-Requested-With' を追加
     'exposed_headers' => [],
