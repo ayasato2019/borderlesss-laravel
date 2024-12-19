@@ -20,14 +20,15 @@ export default function BlogList() {
         const fetchData = async () => {
             try {
                 const res = await fetch('/api/blog');
-                const data: string = await res.text();
-                console.log(data);
-                // const data: ZennResponse = await res.json();
-                // if (data?.articles) {
-                //     setPosts(data.articles.slice(0, 10)); // 最初の10件のみ
-                // } else {
-                //     console.error('No articles found');
-                // }
+                const res2 = await fetch('/api/blog');
+                const dataText: string = await res2.text();
+                console.log('dataText',dataText);
+                const data: ZennResponse = await res.json();
+                if (data?.articles) {
+                    setPosts(data.articles.slice(0, 10)); // 最初の10件のみ
+                } else {
+                    console.error('No articles found');
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
