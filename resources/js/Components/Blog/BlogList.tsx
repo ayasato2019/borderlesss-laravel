@@ -18,10 +18,17 @@ export default function BlogList() {
     const [posts, setPosts] = useState<ZennItem[]>([]);
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('/api/blog');
-            const data: ZennResponse = await res.json();
-            setPosts(data.articles.slice(0, 10));
-            console.log(data);
+            try {
+                const res = await fetch('/api/blog');
+                const data: ZennResponse = await res.json();
+                if (data?.articles) {
+                    setPosts(data.articles.slice(0, 10)); // 最初の10件のみ
+                } else {
+                    console.error('No articles found');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         };
         fetchData();
     }, []);
@@ -33,7 +40,7 @@ export default function BlogList() {
             <div className="container h-auto mx-auto my-9 flex flex-row flex-wrap gap-2">
                 {posts.map((post, index) => (
                     <article
-                        key={post.id}
+                        key={index}
                         className="w-full h-auto md:w-[calc(50%-4px)] "
                     >
                         <a
