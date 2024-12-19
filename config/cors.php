@@ -15,20 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'api/blog'],
-
+    'paths' => ['api/*', 'sanctum/csrf-cookie'], // 使用するパスを設定
     'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['https://borderlesss.net'],
-
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept'],
-
+    'allowed_origins' => ['*'],
+    'allowed_headers' => ['*'],
+    // 'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept'], // 'X-Requested-With' を追加
     'exposed_headers' => [],
-
     'max_age' => 0,
-
     'supports_credentials' => true,
 
 ];

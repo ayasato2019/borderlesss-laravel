@@ -41,27 +41,26 @@ Route::get('/blog', function () {
     return Inertia::render('Blog/app');
 })->name('blog');
 
-Route::get('api/blog', function () {
-    try {
-        $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
-        
-        // レスポンスのステータスコードと内容をログに出力
-        Log::info('API Response Status: ' . $response->status());
-        Log::info('API Response Body: ' . $response->body());
-        
-        // レスポンスが成功かどうかを確認
-        if ($response->failed()) {
-            throw new \Exception('APIリクエスト失敗: ' . $response->status());
-        }
+// Route::get('/api/blog', function () {
+//     try {
+//         $response = Http::get('https://zenn.dev/api/articles?username=aya_sato&order=latest');
 
-        return response()->json($response->json());
-    } catch (\Exception $e) {
-        // エラーログを詳細に記録
-        Log::error('APIリクエストエラー: ' . $e->getMessage());
-        return response()->json(['error' => 'データ取得に失敗しました'], 500);
-    }
-    dd($response);
-});
+//         // レスポンスのステータスコードと内容をログに出力
+//         Log::info('API Response Status: ' . $response->status());
+//         Log::info('API Response Body: ' . $response->body());
+
+//         // レスポンスが成功かどうかを確認
+//         if ($response->failed()) {
+//             throw new \Exception('APIリクエスト失敗: ' . $response->status());
+//         }
+
+//         return response()->json($response->json());
+//     } catch (\Exception $e) {
+//         // エラーログを詳細に記録
+//         Log::error('APIリクエストエラー: ' . $e->getMessage());
+//         return response()->json(['error' => 'データ取得に失敗しました'], 500);
+//     }
+// });
 
 /* conact */
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

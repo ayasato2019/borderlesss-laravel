@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Title from '../PageTitle';
 import ConvertDate from './ConvertDate';
 
@@ -17,50 +16,15 @@ export type ZennResponse = {
 
 export default function BlogList() {
     const [posts, setPosts] = useState<ZennItem[]>([]);
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch('/zenn/articles');
-    //         const data: ZennResponse = await res.json();
-    //         setPosts(data.articles.slice(0, 10));
-    //         console.log(data);
-    //     };
-    //     fetchData();
-    // }, []);
-
-    // useEffect(() => {
-        // const fetchData = async () => {
-        //     try {
-        //         const res = await fetch('api/blog');
-        //         if (!res.ok) {
-        //             throw new Error('ネットワークエラー');
-        //         }
-        //         const data: ZennResponse = await res.json();
-        //         setPosts(data.articles.slice(0, 10));
-        //     } catch (error) {
-        //         if (error instanceof Error) {
-        //             console.error('エラー:', error.message);
-        //         } else {
-        //             console.error('予期しないエラーが発生しました');
-        //         }
-        //     }
-        // };
-        
-        // fetchData();
-        useEffect(() => {
-            axios.get('/api/blog', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'X-Requested-With': 'XMLHttpRequest',
-                },
-            })
-            .then(response => {
-                console.log(response.data); // 取得したデータを処理
-            })
-            .catch(error => {
-                console.error('Error fetching blog data:', error);
-            });
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch('/api/blog');
+            const data: ZennResponse = await res.json();
+            setPosts(data.articles.slice(0, 10));
+            console.log(data);
+        };
+        fetchData();
     }, []);
-
 
     return (
         <>
