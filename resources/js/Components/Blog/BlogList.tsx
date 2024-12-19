@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Title from '../PageTitle';
+import ZenBlog from '../../../json/Zen-blog.json';
 import ConvertDate from './ConvertDate';
 
 export type ZennItem = {
@@ -20,16 +21,18 @@ export default function BlogList() {
         const fetchData = async () => {
             try {
                 const res = await fetch('/api/blog');
-                const res2 = await fetch('/api/blog');
-                const dataText: string = await res2.text();
-                console.log('dataText',dataText);
                 const data: ZennResponse = await res.json();
                 if (data?.articles) {
-                    setPosts(data.articles.slice(0, 10)); // 最初の10件のみ
+                    setPosts(data.articles.slice(0, 10));
                 } else {
                     console.error('No articles found');
                 }
             } catch (error) {
+                if (ZenBlog?.articles) {
+                    setPosts(ZenBlog.articles.slice(0, 10));
+                } else {
+                    console.error('No articles found in ZenBlog');
+                }
                 console.error('Error fetching data:', error);
             }
         };

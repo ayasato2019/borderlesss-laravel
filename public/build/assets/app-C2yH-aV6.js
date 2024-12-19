@@ -1,0 +1,1 @@
+import{j as r}from"./app-CmF9m_Gm.js";import{G as t}from"./GuestLayout-CW33AlWe.js";import{S as i}from"./ServiceList-BqbXmse1.js";import"./app-D5RdPmV-.js";import"./Header-bMq0ostP.js";import"./PageTitle-kEvDlRHW.js";function f(){return r.jsx(t,{children:r.jsx(i,{})})}export{f as default};
