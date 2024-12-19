@@ -34,8 +34,18 @@
     }
 }
 
+/* スクロールバーを消す */
+.wrapper,
+#app,
 body::-webkit-scrollbar {
 	display: none; /* Chrome, Safari, Opera */
+}
+
+.wrapper,
+#app,
+body {
+	-ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 body {
@@ -52,9 +62,6 @@ body {
 	-webkit-scroll-snap-type: mandatory;
 	-webkit-scroll-snap-points-y: repeat(100vh);
 	scroll-snap-type: y mandatory;
-	/* スクロールバーを消す */
-	-ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .header {
