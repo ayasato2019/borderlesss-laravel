@@ -13,7 +13,7 @@ export default function Policy() {
 						ポリシー
 					</h2>
 				</header>
-				<p className="mt-5">My vision is to create a society in which all people can live in a better environment. In particular, I am passionate about building a world that is more comfortable for children and people with some form of handicap. I listen to the small voices and strive to create an environment where everyone can smile.</p>
+				<p className="mt-5 text-muted-foreground">My vision is to create a society in which all people can live in a better environment. In particular, I am passionate about building a world that is more comfortable for children and people with some form of handicap. I listen to the small voices and strive to create an environment where everyone can smile.</p>
 				<p className="mt-5">私たちは、すべての人がより良い環境で暮らせる社会の実現を目指します。特に、子どもや何らかのハンディキャップを持つ人々にとって過ごしやすい世界を構築することに情熱を注いでいます。小さな声に耳を傾け、誰もが笑顔でいられる環境作りに尽力します。</p>
 			</section>
 			<div id="canvas-policy" className="w-full md:w-[calc(50%-16px)] h-full">
