@@ -9,12 +9,12 @@
     <!-- CSRF -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- トラッキング -->
-    <script id="_bownow_ts">
+    {{-- <script id="_bownow_ts">
         var _bownow_ts = document.createElement('script');
         _bownow_ts.charset = 'utf-8';
         _bownow_ts.src = 'https://contents.bownow.jp/js/UTC_e345f40dcfdf5b294d75/trace.js';
         document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
-    </script>
+    </script> --}}
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
